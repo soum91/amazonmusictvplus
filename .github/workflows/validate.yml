@@ -1,0 +1,23 @@
+name: Validate TV integration
+on:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Verify integration declarations
+        run: python3 tools/check_source.py
+      - name: Fetch verified compile tools
+        run: python3 tools/bootstrap.py --compile-only
+      - name: Compile native TV UI and services
+        run: |
+          mkdir -p build/classes
+          java -jar build-tools/ecj.jar -8 -nowarn -classpath build-tools/android.jar -d build/classes src/com/soum91/amazonmusictv/*.java

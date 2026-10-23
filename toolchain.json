@@ -1,0 +1,20 @@
+{
+  "apktool.jar": {
+    "sha256": "66cf4524a4a45a7f56567d08b2c9b6ec237bcdd78cee69fd4a59c8a0243aeafa"
+  },
+  "apkeditor.jar": {
+    "sha256": "a9cd40df818845456be6d696de6110c89edf4b0a0580cb83438ed6b25a366e67"
+  },
+  "signer.jar": {
+    "sha256": "e1299fd6fcf4da527dd53735b56127e8ea922a321128123b9c32d619bba1d835"
+  },
+  "android.jar": {
+    "sha256": "60be6880d7b2b526d654460d4ce6fa81bf23efaa28b02d901d0b63a01ccf4671"
+  },
+  "ecj.jar": {
+    "sha256": "05cc22a24e7982970f63a405fc6c820bc80b806f27f3c5a6236fc475f8f7152b"
+  },
+  "r8.jar": {
+    "sha256": "204b2fc2b0f4e888dc0ef748b58090def1bf4185068d36abbb94841dbc7107a8"
+  }
+}

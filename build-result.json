@@ -1,0 +1,30 @@
+{
+  "filename": "Amazon-Music-TV-26.36.1-tv.3-arm32.apk",
+  "sha256": "c34a45603a4f397b0abd22482b92264c75e3aacf0d584efccdc34213b11ab49d",
+  "size_bytes": 133249647,
+  "signer_sha256": "99bec8a3a491133fc24e245459b5c5c2a5bddbf2b7fdff498808bcd8c78d6125",
+  "version_code": 526360113,
+  "validation": [
+    "clean build from both original APK inputs",
+    "standard and Leanback launcher resolve to TvActivity",
+    "PiP, overlay, media playback foreground service and permission-protected DreamService declarations packaged",
+    "same signing certificate as builds 1 and 2",
+    "higher version code",
+    "original patched playback dex and all 52 native libraries unchanged from build 2",
+    "ZIP integrity",
+    "ARM32 libraries only",
+    "zipalign verified",
+    "APK v3 signature verified",
+    "native Java UI and services compile against API 35",
+    "eight TV layouts and their resource dependencies compiled"
+  ],
+  "not_tested": [
+    "final UI and D-pad behavior on Sony A80L",
+    "Amazon login and media browsing on device",
+    "PiP and floating dock on Sony firmware",
+    "lockscreen or Home media controls placement",
+    "screensaver selection and rendering",
+    "sustained HDMI Atmos",
+    "UHD output resolution"
+  ]
+}

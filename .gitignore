@@ -1,0 +1,12 @@
+signing/
+build/
+build-tools/
+tv-port/
+__pycache__/
+*.pyc
+*.apk
+*.apks
+*.apkm
+*.jks
+*.keystore
+*.jar

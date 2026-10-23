@@ -1,0 +1,1052 @@
+<?xml version='1.0' encoding='utf-8'?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:horizonos="http://schemas.horizonos/sdk" android:compileSdkVersion="36" android:compileSdkVersionCodename="16" android:installLocation="auto" package="com.amazon.mp3" platformBuildVersionCode="36" platformBuildVersionName="16">
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="androidx.car.app.MEDIA_TEMPLATES" />
+    <uses-feature android:name="android.software.car.templates_host.media" android:required="false" />
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="https" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.SENDTO" />
+            <data android:host="*" android:scheme="smsto" />
+        </intent>
+        <provider android:authorities="com.sec.android.app.samsungapps.provider.ASAA" />
+        <provider android:authorities="androidx.car.app.connection" android:name="androidx.car.app.connection.provider" />
+        <intent>
+            <action android:name="com.android.vending.billing.InAppBillingService.BIND" />
+        </intent>
+        <intent>
+            <action android:name="com.google.android.apps.play.billingtestcompanion.BillingOverrideService.BIND" />
+        </intent>
+        <package android:name="com.google.android.gms.policy_cast_dynamite" />
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+        <intent>
+            <action android:name="android.media.action.ACTION_VIDEO_CAPTURE" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.GET_CONTENT" />
+            <category android:name="android.intent.category.OPENABLE" />
+            <data android:mimeType="*/*" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.OPEN_DOCUMENT_TREE" />
+        </intent>
+        <package android:name="com.amazon.appmanager" />
+        <intent>
+            <action android:name="com.amazon.identity.action.CROSS_APP_CONTEXT_PROVIDER" />
+        </intent>
+        <intent>
+            <action android:name="com.amazon.identity.action.BOOTSTRAP_SSO" />
+        </intent>
+        <intent>
+            <action android:name="com.amazon.dcp.sso.action.session.users.changed" />
+        </intent>
+    </queries>
+    <queries>
+        <package android:name="com.facebook.katana" />
+        <package android:name="com.instagram.android" />
+        <package android:name="com.facebook.lite" />
+        <package android:name="jp.naver.line.android" />
+        <package android:name="com.twitter.android" />
+        <package android:name="com.whatsapp" />
+        <package android:name="com.amazon.appmanager" />
+        <package android:name="com.snapchat.android" />
+        <package android:name="com.zhiliaoapp.musically" />
+        <package android:name="com.ss.android.ugc.trill" />
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="upi" />
+        </intent>
+        <package android:name="com.google.android.apps.nbu.paisa.user" />
+        <package android:name="com.phonepe.app" />
+        <package android:name="net.one97.paytm" />
+        <package android:name="com.dreamplug.androidapp" />
+        <package android:name="in.org.npci.upiapp" />
+        <package android:name="com.adityabirlacapitaldigital.OneApp" />
+        <package android:name="org.altruist.BajajExperia" />
+        <package android:name="in.bajajfinservmarkets.app" />
+        <package android:name="com.postpe.app" />
+        <package android:name="com.yield.curie_money" />
+        <package android:name="com.fampay.in" />
+        <package android:name="com.epifi.paisa" />
+        <package android:name="money.super.payments" />
+        <package android:name="com.moneytap.bnpl.app" />
+        <package android:name="com.genwiseclub.app" />
+        <package android:name="com.nextbillion.groww" />
+        <package android:name="in.indwealth" />
+        <package android:name="money.jupiter" />
+        <package android:name="in.gokiwi.kiwitpap" />
+        <package android:name="com.kreditpe.android.app" />
+        <package android:name="com.makemytrip" />
+        <package android:name="com.mobikwik_new" />
+        <package android:name="com.whizdm.moneyview.loans" />
+        <package android:name="finance.global.travel.niyo" />
+        <package android:name="com.naviapp" />
+        <package android:name="com.creditcard.onecard" />
+        <package android:name="in.okcredit.merchant" />
+        <package android:name="com.popclub.android" />
+        <package android:name="omnicash.rio.app" />
+        <package android:name="com.samsung.android.spay" />
+        <package android:name="com.salaryse.android" />
+        <package android:name="com.shriram.one" />
+        <package android:name="indwin.c3.shareapp" />
+        <package android:name="com.super.money" />
+        <package android:name="com.tatadigital.tcp" />
+        <package android:name="com.npst.timepay.society" />
+        <package android:name="com.telangana.twallet" />
+        <package android:name="com.twid.android" />
+        <package android:name="com.ultracash.payment.customer" />
+        <package android:name="in.amazon.mShop.android.amazon.pay" />
+        <package android:name="com.canarabhim.upiapp.mobility" />
+        <package android:name="com.hdfcbank.payzapp" />
+        <package android:name="com.kreditbee.android" />
+        <package android:name="com.eroute.omnicard" />
+        <package android:name="com.jar.app" />
+        <package android:name="com.bnb.paynearby" />
+        <package android:name="com.pinelabs.fave" />
+        <package android:name="in.magnetapp" />
+        <package android:name="com.credilio.customer" />
+        <package android:name="com.customer.herofincorp" />
+        <package android:name="cards.scapia.android" />
+        <package android:name="com.stashfin.android" />
+        <package android:name="com.finvasia.jumpp" />
+        <package android:name="com.myairtelapp" />
+        <package android:name="com.lcode.dlbupi" />
+        <package android:name="com.idfcfirstbank.optimus" />
+        <package android:name="in.irisbyyes.app" />
+        <package android:name="com.yesbank.yespaynext" />
+        <package android:name="com.lxme" />
+        <package android:name="com.mufinpay.superapp" />
+        <package android:name="com.revolut.retail.india" />
+        <package android:name="com.cheq.retail" />
+        <package android:name="com.rediff.mail.and" />
+        <package android:name="com.boi.ua.android" />
+        <package android:name="com.csam.icici.bank.imobile" />
+        <package android:name="com.snapwork.IDBI" />
+        <package android:name="in.jfs.jiofinance" />
+        <package android:name="com.sbi.lotusintouch" />
+        <package android:name="app.ebixcash" />
+        <package android:name="com.jio.myjio" />
+        <package android:name="in.amazon.mShop.android.shopping" />
+    </queries>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:maxSdkVersion="22" android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:maxSdkVersion="29" android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:maxSdkVersion="32" android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="amazon.permission.COLLECT_METRICS" />
+    <uses-permission android:name="com.amazon.dcp.metrics.permission.METRICS_PERMISSION" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+    <uses-feature android:name="android.hardware.bluetooth" android:required="false" />
+    <uses-permission android:maxSdkVersion="30" android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:maxSdkVersion="30" android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:minSdkVersion="31" android:name="android.permission.BLUETOOTH_ADVERTISE" />
+    <uses-permission android:minSdkVersion="31" android:name="android.permission.BLUETOOTH_SCAN" android:usesPermissionFlags="neverForLocation" />
+    <uses-permission android:minSdkVersion="31" android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="com.amazon.dcp.sso.permission.account.changed" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <permission android:name="com.amazon.mp3.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+    <uses-permission android:name="com.amazon.mp3.permission.C2D_MESSAGE" />
+    <permission-group android:name="android.permission-group.PERSONAL_INFO" />
+    <uses-permission android:name="com.amazon.CONTENT_PROVIDER_ACCESS" />
+    <uses-permission android:name="com.amazon.CONTENT_NOTIFICATION_ACCESS" />
+    <permission android:name="com.amazon.mp3.DYNAMIC_RECEIVER_PERMISSION" android:protectionLevel="signature" />
+    <uses-permission android:name="com.amazon.mp3.DYNAMIC_RECEIVER_PERMISSION" />
+    <uses-permission android:name="com.amazon.alexa.externalmediaplayer.permission.CONNECT" />
+    <uses-permission android:name="com.amazon.alexa.externalmediaplayer.permission.WAKE_UP" />
+    <uses-permission android:name="com.sec.android.app.samsungapps.accesspermission.ASAA_PROVIDER.READ" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+    <uses-permission android:name="android.permission.READ_BASIC_PHONE_STATE" />
+    <uses-permission android:name="com.amazon.kindle.cms.CMS_ACCESS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:minSdkVersion="34" android:name="android.permission.DETECT_SCREEN_CAPTURE" />
+    <permission android:name="com.amazon.mp3.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="signature" />
+    <uses-permission android:name="com.amazon.mp3.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+    <uses-feature android:name="com.fireos.sdk.minerva" android:required="false" />
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+    <meta-data android:name="horizon.platform.sdk.group_presence.version" android:value="0.2.0" />
+    <meta-data android:name="horizon.platform.sdk.application_lifecycle.version" android:value="0.2.0" />
+    <meta-data android:name="horizon.platform.sdk.leaderboards.version" android:value="0.2.0" />
+    <meta-data android:name="horizon.platform.sdk.users.version" android:value="0.2.0" />
+    <meta-data android:name="horizon.platform.sdk.push_notification.version" android:value="0.2.0" />
+    <meta-data android:name="horizon.platform.sdk.language_pack.version" android:value="0.2.0" />
+    <meta-data android:name="horizon.platform.sdk.asset_file.version" android:value="0.2.0" />
+    <meta-data android:name="horizon.platform.sdk.user_age_category.version" android:value="0.2.0" />
+    <horizonos:uses-horizonos-sdk horizonos:minSdkVersion="79" horizonos:targetSdkVersion="79" />
+    <meta-data android:name="horizon.platform.sdk.device_application_integrity.version" android:value="0.2.0" />
+    <meta-data android:name="horizon.platform.sdk.iap.version" android:value="0.2.0" />
+    <horizonos:uses-horizonos-sdk horizonos:minSdkVersion="79" horizonos:targetSdkVersion="79" />
+    <meta-data android:name="horizon.platform.sdk.application.version" android:value="0.2.0" />
+    <meta-data android:name="horizon.platform.sdk.abuse_report.version" android:value="0.2.0" />
+    <meta-data android:name="horizon.platform.sdk.consent.version" android:value="0.2.0" />
+    <meta-data android:name="horizon.platform.sdk.rich_presence.version" android:value="0.2.0" />
+    <meta-data android:name="horizon.platform.sdk.achievements.version" android:value="0.2.0" />
+    <meta-data android:name="horizon.platform.sdk.notifications.version" android:value="0.2.0" />
+    <meta-data android:name="horizon.platform.sdk.core.coroutines.version" android:value="0.2.0" />
+    <horizonos:uses-horizonos-sdk horizonos:minSdkVersion="77" horizonos:targetSdkVersion="77" />
+    <horizonos:uses-horizonos-supplement horizonos:minSupplementVersion="1" horizonos:name="horizonos-supplement-hzplatformclientcore" horizonos:targetSupplementVersion="1" />
+    <uses-permission android:name="com.amazon.dcp.config.permission.DYN_CONFIG_VALUES_UPDATED" />
+    <uses-permission android:name="com.amazon.identity.auth.device.perm.AUTH_SDK" />
+    <uses-permission android:name="com.amazon.identity.permission.GENERIC_IPC" />
+    <uses-permission android:name="com.amazon.dcp.sso.permission.USE_DEVICE_CREDENTIALS" />
+    <uses-permission android:name="com.amazon.dcp.sso.permission.MANAGE_COR_PFM" />
+    <uses-permission android:name="com.amazon.dcp.sso.permission.CUSTOMER_ATTRIBUTE_SERVICE" />
+    <uses-permission android:name="com.amazon.identity.permission.CAN_CALL_MAP_INFORMATION_PROVIDER" />
+    <uses-permission android:name="com.amazon.dcp.sso.permission.AmazonAccountPropertyService.property.changed" />
+    <uses-permission android:name="com.amazon.identity.permission.CALL_AMAZON_DEVICE_INFORMATION_PROVIDER" />
+    <uses-permission android:name="com.amazon.appmanager.preload.permission.READ_PRELOAD_DEVICE_INFO_PROVIDER" />
+    <uses-permission android:name="android.permission.CREDENTIAL_MANAGER_QUERY_CANDIDATE_CREDENTIALS" />
+    <application android:allowBackup="false" android:allowCrossUidActivitySwitchFromBelow="false" android:appCategory="audio" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:extractNativeLibs="true" android:fullBackupContent="false" android:hardwareAccelerated="true" android:icon="@mipmap/ic_launcher_adaptive" android:label="Amazon Music TV Plus" android:largeHeap="true" android:logo="@color/transparent" android:name="com.amazon.mp3.AmazonApplication" android:networkSecurityConfig="@string/network_security_config" android:requestLegacyExternalStorage="true" android:resizeableActivity="true" android:roundIcon="@mipmap/ic_launcher_adaptive_round" android:supportsRtl="true" android:theme="@style/Theme.AmazonMP3" android:banner="@drawable/amazon_music_tv_banner">
+        <receiver android:enabled="true" android:exported="true" android:name="com.amazon.mp3.eventReceiver.UpgradeReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+        <service android:enabled="true" android:exported="true" android:foregroundServiceType="connectedDevice" android:name="com.amazon.mp3.watch.TetheredMessageService">
+            <intent-filter>
+                <action android:name="com.google.android.gms.wearable.MESSAGE_RECEIVED" />
+                <data android:host="*" android:pathPrefix="/wearos" android:scheme="wear" />
+            </intent-filter>
+        </service>
+        <service android:exported="true" android:foregroundServiceType="mediaPlayback" android:name="com.amazon.mp3.auto.AutoMusicService">
+            <intent-filter>
+                <action android:name="android.media.browse.MediaBrowserService" />
+            </intent-filter>
+            <meta-data android:name="com.amazon.alexa.externalmediaplayer.metadata" android:resource="@raw/external_media_player_metadata" />
+        </service>
+        <meta-data android:name="MAPRuntimeIsolateForAccountPool" android:value="Amazon_Teens" />
+        <service android:enabled="false" android:exported="true" android:name="com.amazon.music.media.autocal.AmazonMusicCarAppService">
+            <intent-filter>
+                <action android:name="androidx.car.app.CarAppService" />
+                <category android:name="androidx.car.app.category.MEDIA" />
+            </intent-filter>
+        </service>
+        <meta-data android:name="androidx.car.app.minCarApiLevel" android:value="8" />
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+        <uses-library android:name="com.amazon.i18n.util" android:required="false" />
+        <meta-data android:name="android.webkit.WebView.EnableSafeBrowsing" android:value="true" />
+        <meta-data android:name="App_Device_Type_For_Central_Device_Type_A1PY8QQU9P0WJV" android:value="ATH4K2BAIXVHQ" />
+        <meta-data android:name="App_Device_Type_For_Central_Device_Type_A17I2SKGZYX7FH" android:value="A31ANRUHT2I2JF" />
+        <meta-data android:name="App_Device_Type_For_Central_Device_Type_A1MPSLFC7L5AFK" android:value="A1DL2DVDQVK3Q" />
+        <meta-data android:name="App_Device_Type_For_Central_Device_Type_A2H9TRG5Y7APH7" android:value="A2H9TRG5Y7APH7" />
+        <meta-data android:name="MAPDeviceType" android:value="A1DL2DVDQVK3Q" />
+        <meta-data android:name="MAPDeviceAttributeRuntimeOverride" android:value="true" />
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+        <meta-data android:name="firebase_performance_logcat_enabled" android:value="false" />
+        <meta-data android:name="com.google.android.gms.car.application" android:resource="@xml/automotive_app_desc" />
+        <meta-data android:name="com.google.android.gms.car.application.theme" android:resource="@style/Theme.AmazonMP3.AutoTheme" />
+        <meta-data android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME" android:value="com.amazon.music.chromecast.CastOptionsProvider" />
+        <meta-data android:name="android.max_aspect" android:value="2.1" />
+        <meta-data android:name="com.google.android.gms.ads.AD_MANAGER_APP" android:value="false" />
+        <provider android:authorities="com.amazon.mp3.app-start-time-provider" android:exported="false" android:initOrder="2147483647" android:name="com.amazon.mp3.performance.AppStartTimeProvider" />
+        <provider android:authorities="com.amazon.mp3.media.automotive.provider" android:exported="true" android:name="com.amazon.music.media.auto.provider.MediaItemImageContentProvider" />
+        <provider android:authorities="com.amazon.mp3.Media" android:exported="true" android:name="com.amazon.mp3.library.provider.MediaProvider" android:permission="com.amazon.CONTENT_PROVIDER_ACCESS" />
+        <provider android:authorities="com.amazon.mp3.content" android:exported="true" android:name="com.amazon.mp3.library.provider.ExternalProvider" android:permission="com.amazon.CONTENT_PROVIDER_ACCESS">
+            <path-permission android:pathPrefix="/thumbnail" android:readPermission="android.permission.GLOBAL_SEARCH" />
+            <path-permission android:pathPrefix="/search_suggest_query" android:readPermission="android.permission.GLOBAL_SEARCH" />
+        </provider>
+        <provider android:authorities="com.amazon.identity.auth.device.MapInfoProvider.AmazonMusicMAPInformationProvider" android:exported="true" android:name="com.amazon.mp3.account.auth.AmazonMusicMAPInformationProvider" android:permission="com.amazon.identity.permission.CAN_CALL_MAP_INFORMATION_PROVIDER" />
+        <provider android:authorities="com.amazon.mp3.logs.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/log_file_paths" />
+        </provider>
+        <provider android:authorities="com.amazon.mp3.androidx-startup" android:exported="false" android:name="androidx.startup.InitializationProvider">
+            <meta-data android:name="com.amazon.mp3.startup.initializers.StartupDataStoreInitializer" android:value="androidx.startup" />
+            <meta-data android:name="com.apollographql.cache.normalized.sql.ApolloInitializer" android:value="androidx.startup" />
+            <meta-data android:name="androidx.work.WorkManagerInitializer" android:value="androidx.startup" />
+            <meta-data android:name="androidx.emoji2.text.EmojiCompatInitializer" android:value="androidx.startup" />
+            <meta-data android:name="androidx.lifecycle.ProcessLifecycleInitializer" android:value="androidx.startup" />
+            <meta-data android:name="com.amazon.music.arklink.connection.ArkLinkAppContextInitializer" android:value="androidx.startup" />
+            <meta-data android:name="androidx.profileinstaller.ProfileInstallerInitializer" android:value="androidx.startup" />
+            <meta-data android:name="com.russhwolf.settings.SettingsInitializer" android:value="androidx.startup" />
+        </provider>
+        <activity android:exported="true" android:launchMode="singleTask" android:name="com.amazon.mp3.activity.MusicHomeActivity" android:theme="@style/Theme.AmazonMP3.MusicHomeActivity" android:windowSoftInputMode="adjustNothing">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.media.action.MEDIA_PLAY_FROM_SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="android.app.searchable" android:resource="@xml/store_searchable" />
+        </activity>
+        <activity android:exported="true" android:name="com.amazon.music.push.activity.NotificationOpenHandlerActivity">
+            <intent-filter>
+                <action android:name="com.amazon.mp3.push.intent" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <service android:exported="true" android:name="com.amazon.music.push.PushMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <meta-data android:name="firebase_analytics_collection_deactivated" android:value="true" />
+        <activity android:name="com.amazon.music.alps.pvplayer.PVPlayerFullscreenActivity" />
+        <activity android:launchMode="singleTask" android:name="com.amazon.podcast.nowplayingstage.NowPlayingActivity" />
+        <activity android:configChanges="orientation|screenLayout|screenSize" android:launchMode="singleTask" android:name="com.amazon.podcast.views.alertTemplate.AlertTemplateActivity" />
+        <activity android:configChanges="orientation|screenLayout|screenSize" android:launchMode="singleTask" android:name="com.amazon.podcast.views.stackedButtonsAlertTemplate.StackedButtonsAlertTemplateActivity" />
+        <activity android:configChanges="orientation|screenLayout|screenSize" android:launchMode="singleTask" android:name="com.amazon.podcast.views.ptcTemplate.PTCTemplateActivity" />
+        <activity android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize" android:launchMode="singleTask" android:name="com.amazon.podcast.cardNowPlaying.CardNowPlayingActivity" />
+        <activity android:configChanges="orientation|screenLayout|screenSize" android:launchMode="singleTask" android:name="com.amazon.podcast.views.AutoDownloads.AutoDownloadsPreferencesActivity" />
+        <activity android:launchMode="singleTask" android:name="com.amazon.podcast.cast.CastingDeviceList" />
+        <service android:foregroundServiceType="dataSync" android:name="com.amazon.podcast.downloads.DownloadService" />
+        <service android:exported="false" android:foregroundServiceType="dataSync" android:name="com.amazon.podcast.downloads.mediadownload.VideoDownloadNotificationService" />
+        <activity android:exported="false" android:name="com.amazon.music.splash.SafetySettingsEnabledOnboardingSplash" android:theme="@style/Theme.AmazonMP3.FullScreen" />
+        <activity android:exported="false" android:name="com.amazon.music.splash.ContentFilteringOnboardingSplash" android:theme="@style/Theme.AmazonMP3.FullScreen" />
+        <activity android:name="com.amazon.mp3.library.activity.AddToPlaylistTabActivity" android:theme="@style/Theme.AmazonMP3.PlaylistEdit" />
+        <activity android:name="com.amazon.mp3.activity.AccountStateCheckActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:name="com.amazon.mp3.library.activity.AddToPlaylistActivity" android:theme="@style/Theme.AmazonMP3.PlaylistEdit" />
+        <activity android:exported="false" android:name="com.amazon.mp3.reactnative.GenericReactActivity" android:theme="@style/Theme.AmazonMP3.MaterialComponents.NoActionBar" />
+        <activity android:exported="false" android:launchMode="singleTop" android:name="com.amazon.mp3.reactnative.StageReactActivity" android:theme="@style/Theme.AmazonMP3.MaterialComponents.NoActionBar" />
+        <activity android:configChanges="orientation|screenSize" android:exported="true" android:name="com.amazon.mp3.client.activity.LauncherActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="com.amazon.mp3.otter.action.SHOW_LIBRARY" />
+            </intent-filter>
+        </activity>
+        <activity android:launchMode="singleTop" android:name="com.amazon.mp3.activity.UpdateCheckActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:launchMode="singleTop" android:name="com.amazon.mp3.library.activity.EmptySmartPlaylistActivity" />
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:excludeFromRecents="true" android:launchMode="singleTop" android:name="com.amazon.mp3.playback.activity.NowPlayingFragmentActivity" android:resizeableActivity="true" android:supportsPictureInPicture="true" android:theme="@style/Theme.AmazonMP3.NowPlaying" />
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:launchMode="singleTop" android:name="com.amazon.mp3.fanrecommendations.FeedFragmentActivity" android:screenOrientation="fullSensor" android:theme="@style/Theme.AmazonMP3.FullScreen" />
+        <activity android:excludeFromRecents="true" android:name="com.amazon.mp3.widget.AlexaWidgetContainerActivity" android:taskAffinity="" android:theme="@style/Theme.Transparent" />
+        <activity android:label="" android:launchMode="singleTop" android:name="com.amazon.mp3.voice.onboarding.view.AlexaOnboardingActivity" android:theme="@style/Theme.AmazonMP3.AlexaOnboarding" />
+        <activity android:excludeFromRecents="true" android:exported="false" android:launchMode="singleTop" android:name="com.amazon.music.voice.alexaAssistant.AlexaOverlayActivity" android:theme="@style/Theme.Transparent" />
+        <activity android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:name="com.amazon.music.voice.alexaAssistant.AlexaConversationActivity" android:theme="@style/Theme.Transparent" />
+        <activity android:name="com.amazon.mp3.library.activity.NumberOfPlaylistsLimitReachedActivity" />
+        <activity android:name="com.amazon.mp3.library.activity.AllAccessPlaylistLimitReachedActivity" />
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.amazon.mp3.playback.activity.StreamingNotAuthorizedActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:launchMode="singleTop" android:name="com.amazon.mp3.library.activity.CreateOrRenamePlaylistActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:launchMode="singleTop" android:name="com.amazon.mp3.library.activity.SavePlaylistActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:launchMode="singleTop" android:name="com.amazon.mp3.activity.DownloadDialogActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:launchMode="singleTop" android:name="com.amazon.podcast.PodcastDownloadDialogActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:launchMode="singleTop" android:name="com.amazon.mp3.library.dialog.DownloadedFileNotFoundActivityDialog" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:label="@string/dmusic_playlist_add_to_title" android:launchMode="singleTop" android:name="com.amazon.mp3.library.activity.AddToPlaylistPopupActivity" android:theme="@style/Theme.AmazonMP3.Dialog" />
+        <activity android:name="com.amazon.mp3.activity.RecentItemDeletedActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:launchMode="singleInstance" android:name="com.amazon.mp3.playback.activity.PlaybackErrorDialogActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:launchMode="singleInstance" android:name="com.amazon.mp3.activity.NetworkErrorDialogActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:launchMode="singleInstance" android:name="com.amazon.mp3.activity.SQLErrorDialog" android:theme="@style/Theme.AmazonMP3.Dialog" />
+        <activity android:exported="true" android:launchMode="singleInstance" android:name="com.amazon.mp3.activity.ExternalLauncherActivity" android:theme="@style/Theme.AmazonMP3.Invisible">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.amazon.mp3.recent" />
+                <data android:mimeType="vnd.android.cursor.dir/vnd.amazon.mp3.recent" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.amazon.android.internal.downloads.intent.action.VIEW_DOWNLOADS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable" />
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="standard" android:name="com.amazon.mp3.ftu.FTUActivity" android:theme="@style/Theme.AmazonMP3.FullScreen" />
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.amazon.mp3.prime.upsell.PrimeUpsellActivity" android:theme="@style/Theme.AmazonMP3.FullScreen" />
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.amazon.mp3.hawkfire.upsell.UnlimitedUpsellActivity" android:theme="@style/Theme.AmazonMP3.FullScreen" />
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.amazon.mp3.billing.InAppBillingActivity" android:theme="@style/Theme.AmazonMP3.FullScreen" />
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.amazon.mp3.activity.ATCWebActivity" android:screenOrientation="fullSensor" android:theme="@style/Theme.AmazonMP3.FullScreen" />
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.amazon.mp3.fanquest.FanquestActivity" android:screenOrientation="fullSensor" android:theme="@style/Theme.AmazonMP3.FullScreen" />
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.amazon.mp3.activity.CookieConsentActivity" android:screenOrientation="fullSensor" android:theme="@style/Theme.AmazonMP3.FullScreen" />
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.amazon.mp3.activity.CookieConsentNativeActivity" android:screenOrientation="fullSensor" android:theme="@style/Theme.AmazonMP3.FullScreenOpaque" />
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.amazon.mp3.activity.URLDisplayActivity" android:screenOrientation="fullSensor" android:theme="@style/Theme.AmazonMP3.FullScreen" />
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTask" android:name="com.amazon.mp3.activity.TwitchEmbedActivity" android:screenOrientation="fullSensor" android:theme="@style/Theme.AmazonMP3.FullScreen" />
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTask" android:name="com.amazon.mp3.account.activity.AccountWebViewActivity" android:theme="@style/Theme.AmazonMP3.FullScreen" />
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTask" android:name="com.amazon.mp3.account.activity.AccountMigratedDialogActivity" android:theme="@style/Theme.AmazonMP3.FullScreen" />
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.amazon.mp3.activity.CantileverActivity" android:theme="@style/Theme.AmazonMP3.FullScreen" />
+        <activity android:exported="true" android:launchMode="singleTask" android:name="com.amazon.mp3.navigation.DeeplinkHandlerActivity" android:theme="@style/Theme.AmazonMP3.Invisible">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="music.amazon.com" />
+                <data android:host="music.amazon.co.uk" />
+                <data android:host="music.amazon.de" />
+                <data android:host="music.amazon.fr" />
+                <data android:host="music.amazon.it" />
+                <data android:host="music.amazon.es" />
+                <data android:host="music.amazon.co.jp" />
+                <data android:host="music.amazon.ca" />
+                <data android:host="music.amazon.com.au" />
+                <data android:host="music.amazon.in" />
+                <data android:host="music.amazon.com.mx" />
+                <data android:host="music.amazon.com.br" />
+                <data android:host="music.amazon.ae" />
+                <data android:host="music.amazon.sa" />
+                <data android:host="music.amazon.eg" />
+                <data android:host="musicapp.amazon.com" />
+                <data android:pathPattern="/gp/r.html" />
+                <data android:pathPattern="/browse/.*/artist/.*/.*" />
+                <data android:pathPattern="/browse/.*/home/recommendation/.*" />
+                <data android:pathPattern="/home/recommendation/.*" />
+                <data android:pathPattern="/.*/popular.*" />
+                <data android:pathPattern="/.*/popular/genre/.*" />
+                <data android:pathPattern="/popular.*" />
+                <data android:pathPattern="/popular/genre/.*" />
+                <data android:pathPattern="/popular/.*" />
+                <data android:pathPattern="/.*/new.*" />
+                <data android:pathPattern="/.*/new/genre/.*" />
+                <data android:pathPattern="/new.*" />
+                <data android:pathPattern="/new/genre/.*" />
+                <data android:pathPattern="/.*/uhd.*" />
+                <data android:pathPattern="/uhd.*" />
+                <data android:pathPattern="/stations.*" />
+                <data android:pathPattern="/stations/genre/.*" />
+                <data android:pathPattern="/videos.*" />
+                <data android:pathPattern="/recommended.*" />
+                <data android:pathPattern="/tastes.*" />
+                <data android:pathPattern="/home.*" />
+                <data android:pathPattern="/.*/search.*" />
+                <data android:pathPattern="/search.*" />
+                <data android:pathPattern="/upsell/.*" />
+                <data android:pathPattern="/.*/genres/.*" />
+                <data android:pathPattern="/genres/.*" />
+                <data android:pathPattern="/genres/.*/.*" />
+                <data android:pathPattern="/playlists/byme" />
+                <data android:pathPattern="/.*/playlists.*" />
+                <data android:pathPattern="/.*/playlists/genre/.*" />
+                <data android:pathPattern="/playlists.*" />
+                <data android:pathPattern="/playlists/genre/.*" />
+                <data android:pathPattern="/playlists/pp/.*" />
+                <data android:pathPattern="/digital-subscriptions" />
+                <data android:pathPattern="/digital-subscriptions/.*" />
+                <data android:pathPattern="/signup/.*" />
+                <data android:pathPattern="/signup/playstore/.*" />
+                <data android:pathPattern="/unlimited/family/invite.*" />
+                <data android:pathPattern="/family" />
+                <data android:pathPattern="/personal-insights" />
+                <data android:pathPattern="/campaigns" />
+                <data android:pathPattern="/campaigns/.*" />
+                <data android:pathPattern="/.*/user-playlists/aaup.*" />
+                <data android:pathPattern="/user-playlists/aaup.*" />
+                <data android:pathPattern="/amFeedback/" />
+                <data android:pathPattern="/.*/playlists/.*" />
+                <data android:pathPattern="/playlists/.*" />
+                <data android:pathPattern="/.*/albums/.*" />
+                <data android:pathPattern="/.*/albums/.*/.*" />
+                <data android:pathPattern="/albums/.*" />
+                <data android:pathPattern="/albums/.*/.*" />
+                <data android:pathPattern="/videos/.*" />
+                <data android:pathPattern="/.*/stations/.*" />
+                <data android:pathPattern="/stations/.*" />
+                <data android:pathPattern="/artists/merch/.*" />
+                <data android:pathPattern="/artists/merch/.*/.*" />
+                <data android:pathPattern="/merch/artists/.*/items/.*" />
+                <data android:pathPattern="/merch/artists/.*" />
+                <data android:pathPattern="/merch/artists/.*/.*" />
+                <data android:pathPattern="/merch/items/.*" />
+                <data android:pathPattern="/.*/merch/shop" />
+                <data android:pathPattern="/.*/merch/shop/.*" />
+                <data android:pathPattern="/merch/shop" />
+                <data android:pathPattern="/merch/shop/.*" />
+                <data android:pathPattern="/artists/[A-Za-z0-9]+(/.*)?/polls/.*" />
+                <data android:pathPattern="/.*/artists/.*" />
+                <data android:pathPattern="/artists/.*" />
+                <data android:pathPattern="/recap/.*/.*" />
+                <data android:pathPattern="/insights-hub" />
+                <data android:pathPattern="/user-playlists/.*" />
+                <data android:pathPattern="/user-playlists/.*/invitations/.*" />
+                <data android:pathPattern="/" />
+                <data android:pathPattern="/seeMore" />
+                <data android:pathPattern="/.*/seeMore" />
+                <data android:pathPattern="/.*/.*/seeMore" />
+                <data android:pathPattern="/settings.*" />
+                <data android:pathPattern="/settings/.*" />
+                <data android:pathPattern="/alexa/launch" />
+                <data android:pathPattern="/audio-quality" />
+                <data android:pathPattern="/iam/.*" />
+                <data android:pathPattern="/dynamic-messaging/.*" />
+                <data android:pathPattern="/profiles/.*" />
+                <data android:pathPattern="/my/profile" />
+                <data android:pathPattern="/tracks/.*" />
+                <data android:pathPattern="/live/streams/.*" />
+                <data android:pathPattern="/live/streams.*" />
+                <data android:pathPattern="/live" />
+                <data android:pathPattern="/live/events/.*/lineup" />
+                <data android:pathPattern="/live/events/.*" />
+                <data android:pathPattern="/live/concerts/.*/lineup" />
+                <data android:pathPattern="/live/concerts/.*" />
+                <data android:pathPattern="/artists/.*/event-listings" />
+                <data android:pathPattern="/.*/podcasts" />
+                <data android:pathPattern="/.*/podcasts/.*" />
+                <data android:pathPattern="/podcasts" />
+                <data android:pathPattern="/podcasts/.*" />
+                <data android:pathPattern="/contact-us/.*" />
+                <data android:pathPattern="/custom-mix.*" />
+                <data android:pathPattern="/my/library" />
+                <data android:pathPattern="/library/albums" />
+                <data android:pathPattern="/library/artists" />
+                <data android:pathPattern="/library/playlists" />
+                <data android:pathPattern="/library/tracks" />
+                <data android:pathPattern="/playqueue" />
+                <data android:pathPattern="/maestro" />
+                <data android:pathPattern="/manage-profiles" />
+                <data android:pathPattern="/settings-profile" />
+                <data android:pathPattern="/subscription-management" />
+                <data android:pathPattern="/subscription-management/explore-plans" />
+                <data android:pathPattern="/welcome-family" />
+                <data android:pathPattern="/fan-groups" />
+                <data android:pathPattern="/fan-groups/.*" />
+                <data android:pathPattern="/fanquest-game" />
+                <data android:pathPattern="/fanquest/post-game" />
+                <data android:pathPattern="/audiobooks" />
+                <data android:pathPattern="/audiobooks/.*" />
+                <data android:pathPattern="/audiobooks/categories/.*" />
+                <data android:pathPattern="/audiobooks/categories/title/.*" />
+                <data android:pathPattern="/audiobooks/explore" />
+                <data android:pathPattern="/audiobooks/library" />
+                <data android:pathPattern="/authors/.*" />
+                <data android:pathPattern="/family-addon" />
+                <data android:pathPattern="/games/sleigh" />
+                <data android:pathPattern="/games/swim" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="amznmp3" />
+                <data android:pathPattern=".*" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:host="am.app.link" android:scheme="https" />
+                <data android:pathPattern=".*" />
+                <data android:host="am-alternate.app.link" android:scheme="https" />
+                <data android:host="am.test-app.link" android:scheme="https" />
+                <data android:host="am-alternate.test-app.link" android:scheme="https" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:host="dl.amazonmusic.com" android:scheme="https" />
+                <data android:pathPattern=".*" />
+            </intent-filter>
+        </activity>
+        <activity android:exported="true" android:name="com.amazon.mp3.activity.IntentProxyActivity" android:theme="@style/Theme.AmazonMP3.Invisible">
+            <intent-filter>
+                <action android:name="com.amazon.mp3.action.LAUNCH_STORE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="com.amazon.mp3.action.EXTERNAL_EVENT" />
+                <action android:name="com.amazon.mp3.action.SHOW_SETTINGS" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="amzn" />
+                <data android:host="mp3" />
+                <data android:pathPattern=".*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:host="*" android:mimeType="audio/*" android:pathPattern=".*" android:scheme="file" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:host="media" android:mimeType="audio/*" android:pathPattern=".*" android:scheme="content" />
+            </intent-filter>
+        </activity>
+        <activity android:launchMode="singleInstance" android:name="com.amazon.mp3.activity.UnsupportedFileTypeActivity" android:noHistory="true" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:launchMode="singleInstance" android:name="com.amazon.mp3.activity.StoreUnsupportedDialogActivity" android:noHistory="true" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:launchMode="singleTop" android:name="com.amazon.mp3.prime.activity.NonPrimeRedirectActivity" android:noHistory="true" />
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.amazon.mp3.download.activity.PlaylistDownloadErrorDialogActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:launchMode="singleTop" android:name="com.amazon.mp3.activity.settings.SettingsActivity" android:theme="@style/Theme.AmazonMP3.Settings">
+            <intent-filter>
+                <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:exported="false" android:name="com.amazon.mp3.activity.settings.SettingsDynamicMessageWrapperActivity" android:noHistory="true" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:name="com.amazon.mp3.activity.settings.LegalInformationActivity" />
+        <activity android:name="com.amazon.mp3.activity.settings.WeblabOverrideActivity" />
+        <activity android:name="com.amazon.mp3.activity.settings.MDEXEntitlementsOverrideActivity" />
+        <activity android:exported="false" android:name="com.amazon.mp3.activity.settings.XrayQualityDenyListOverrideActivity" />
+        <activity android:clearTaskOnLaunch="true" android:exported="false" android:launchMode="singleTop" android:name="com.amazon.mp3.activity.UnknownCountryActivity" />
+        <activity android:launchMode="singleTop" android:name="com.amazon.mp3.activity.ReportCrashDialogActivity" android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:exported="false" android:label="@string/dmusic_clear_cache_title" android:name="com.amazon.mp3.activity.settings.ClearCacheActivity" android:theme="@style/Theme.AmazonMP3.Invisible">
+            <intent-filter>
+                <action android:name="com.amazon.mp3.ACTION_CLEAR_CACHE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:launchMode="singleTop" android:name="com.amazon.mp3.playback.activity.StreamingNetworkPreferenceActivity" android:theme="@style/Theme.AmazonMP3.AlertDialog" />
+        <activity android:launchMode="singleTop" android:name="com.amazon.mp3.download.activity.DownloadLocationPreferenceActivity" android:theme="@style/Theme.AmazonMP3.Dialog.Download" />
+        <activity android:launchMode="singleTop" android:name="com.amazon.mp3.activity.DialogActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:configChanges="keyboardHidden|orientation" android:exported="false" android:launchMode="singleTop" android:name="com.amazon.mp3.library.activity.BaseAccountValidationWebView" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTop" android:name="com.amazon.mp3.library.activity.LibraryDeviceAuthorizationWebViewActivity" android:theme="@style/Theme.AmazonMP3.AuthorizationActivity" />
+        <activity android:launchMode="singleTop" android:name="com.amazon.mp3.activity.BlueMoonExceptionActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:name="com.amazon.mp3.account.activity.SsoWelcomeActivity" />
+        <activity android:exported="false" android:name="com.amazon.mp3.casting.CastingAlertDialogActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:exported="false" android:name="com.amazon.mp3.account.activity.AccountDeregistrationDialogActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:exported="false" android:name="com.amazon.mp3.external.api.uri.SyncAndPlayActivity" />
+        <activity android:launchMode="singleTop" android:name="com.amazon.mp3.library.dialog.NetworkFailureWithSettingsDialog" android:theme="@style/Theme.AmazonMP3" />
+        <activity android:launchMode="singleTop" android:name="com.amazon.mp3.library.dialog.PurchasedStorageLocationChangeDialog" android:theme="@style/Theme.AmazonMP3" />
+        <activity android:launchMode="singleTop" android:name="com.amazon.mp3.library.dialog.BlockChildUserFlowDialog" android:theme="@style/Theme.AmazonMP3" />
+        <activity android:name="com.amazon.mp3.activity.DeluxeContentLauncherActivity" />
+        <activity android:name="com.amazon.mp3.activity.GrantPermissionActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:name="com.amazon.mp3.activity.GrantStoragePermissionActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:name="com.amazon.mp3.activity.GrantSDCardPermissionMainPageActivity" />
+        <activity android:name="com.amazon.mp3.activity.GrantSDCardPermissionStepPageActivity" />
+        <activity android:excludeFromRecents="true" android:name="com.amazon.mp3.activity.GrantMicrophonePermissionsActivity" android:taskAffinity="" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:name="com.amazon.mp3.activity.GrantBluetoothPermissionActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:name="com.amazon.mp3.account.activity.SignInFlowLauncherActivity" />
+        <activity android:allowTaskReparenting="true" android:configChanges="@integer/config_maskLocaleOrientationKeyboardKeyboardHiddenLayoutDirectionScreenSize" android:exported="false" android:label="Amazon AuthPortal" android:launchMode="singleTop" android:name="com.amazon.identity.auth.device.AuthPortalUIActivity" android:permission="com.amazon.identity.auth.device.perm.AUTH_SDK" android:theme="@style/Theme.AmazonMP3.SignIn" />
+        <activity android:name="com.amazon.mp3.vr.auth.VRAuthenticationActivity" />
+        <activity android:name="com.amazon.mp3.activity.MusicLauncherActivity" />
+        <activity android:name="com.amazon.mp3.account.activity.ProgressActivity" />
+        <activity android:name="com.amazon.mp3.account.activity.WelcomeActivity" />
+        <activity android:name="com.amazon.mp3.activity.LanguagePreferenceActivity" />
+        <activity android:name="com.amazon.mp3.activity.settings.tierSwitcher.TierSwitcherActivity" />
+        <activity android:launchMode="singleTop" android:name="com.amazon.mp3.auto.carmode.activity.CarModeActivity" />
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.amazon.mp3.identityprofiles.MainIdentityProfilesActivity" android:windowSoftInputMode="adjustPan" />
+        <service android:exported="false" android:foregroundServiceType="dataSync" android:name="com.amazon.mp3.download.DownloadNotificationService" android:stopWithTask="true" />
+        <service android:name="com.amazon.music.find.intents.EntityTrackingIntentService" android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service android:exported="false" android:foregroundServiceType="connectedDevice" android:name="com.amazon.mp3.watch.WatchSessionService" android:stopWithTask="false" />
+        <service android:exported="false" android:name="com.amazon.mp3.casting.CastingSkillService" android:stopWithTask="false" />
+        <service android:exported="false" android:foregroundServiceType="specialUse" android:name="com.amazon.mp3.skiplimit.impl.RefreshSkipCountService" android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service android:exported="false" android:foregroundServiceType="specialUse" android:name="com.amazon.mp3.service.ComponentCheckService">
+            <intent-filter>
+                <action android:name="com.amazon.mp3.service.ACTION_CHECK_COMPONENTS" />
+            </intent-filter>
+        </service>
+        <service android:exported="false" android:name="com.amazon.mp3.service.job.JobService">
+            <intent-filter>
+                <action android:name="com.amazon.mp3.library.service.job.ACTION_START" />
+                <action android:name="com.amazon.mp3.library.service.job.ACTION_START_SESSION" />
+                <action android:name="com.amazon.mp3.library.service.job.ACTION_SUSPEND_SESSION" />
+                <action android:name="com.amazon.mp3.library.service.job.ACTION_STOP_SESSION" />
+                <action android:name="com.amazon.mp3.library.service.job.ACTION_JOB_ADDED" />
+                <action android:name="com.amazon.mp3.library.service.job.ACTION_CANCEL_JOB" />
+            </intent-filter>
+        </service>
+        <service android:exported="false" android:foregroundServiceType="dataSync" android:name="com.amazon.mp3.library.service.sync.SyncService" />
+        <service android:exported="false" android:name="com.amazon.mp3.voice.wakeword.WakeWordService">
+            <intent-filter>
+                <action android:name="com.amazon.mp3.wakewordcommand.wakeword.user.disabled" />
+                <action android:name="com.amazon.mp3.wakewordcommand.wakeword.user.enabled" />
+                <action android:name="com.amazon.mp3.wakewordcommand.app.in.background" />
+                <action android:name="com.amazon.mp3.wakewordcommand.app.in.foreground" />
+                <action android:name="com.amazon.mp3.wakewordcommand.alexa.ui.opened" />
+                <action android:name="com.amazon.mp3.wakewordcommand.alexa.ui.closed" />
+                <action android:name="com.amazon.mp3.wakewordcommand.microphone.permisson.revoked" />
+            </intent-filter>
+        </service>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_foreground_service_default" android:exported="false" android:foregroundServiceType="dataSync" android:name="androidx.work.impl.foreground.SystemForegroundService" />
+        <service android:exported="false" android:foregroundServiceType="dataSync" android:name="com.amazon.mp3.service.ClearCacheService" />
+        <service android:exported="false" android:foregroundServiceType="dataSync" android:name="com.amazon.mp3.store.html5.service.StoreCacheService" />
+        <service android:exported="true" android:foregroundServiceType="dataSync" android:name="com.amazon.identity.auth.accounts.MAPSubAuthenticatorService">
+            <intent-filter>
+                <action android:name="com.amazon.dcp.sso.AccountSubAuthenticator" />
+            </intent-filter>
+            <meta-data android:name="com.amazon.dcp.sso.AccountSubAuthenticator" android:resource="@xml/sub_authenticator" />
+        </service>
+        <service android:foregroundServiceType="dataSync" android:label="Secondary Storage DRM Scan" android:name="com.amazon.mp3.storage.ExternalStorageScanService" />
+        <receiver android:enabled="true" android:exported="false" android:name="com.amazon.mp3.storage.ExternalStorageListener">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.MEDIA_UNMOUNTED" />
+                <action android:name="android.intent.action.MEDIA_REMOVED" />
+                <action android:name="android.intent.action.MEDIA_EJECT" />
+                <action android:name="android.intent.action.MEDIA_BAD_REMOVAL" />
+                <action android:name="android.intent.action.MEDIA_NOFS" />
+                <action android:name="android.intent.action.MEDIA_UNMOUNTABLE" />
+                <data android:scheme="file" />
+            </intent-filter>
+        </receiver>
+        <service android:enabled="true" android:exported="false" android:foregroundServiceType="mediaPlayback" android:name="com.amazon.mp3.timer.SleepTimerService" android:stopWithTask="true" />
+        <service android:exported="false" android:foregroundServiceType="dataSync" android:name="com.amazon.mp3.download.redownload.ReDownloadOfflineMusicService" android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service android:foregroundServiceType="dataSync" android:name="com.amazon.mp3.account.signout.RemoveAllDownloadsService" />
+        <service android:name="com.amazon.mp3.auto.waze.WazePlaybackService" />
+        <receiver android:enabled="true" android:exported="true" android:name="com.amazon.mp3.library.service.sync.MediaReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_SCANNER_FINISHED" />
+                <data android:scheme="file" />
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:exported="false" android:name="com.amazon.mp3.widget.WidgetBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="true" android:name="com.amazon.mp3.library.service.sync.LoginAccountsChangedReceiver" android:permission="com.amazon.dcp.sso.permission.account.changed">
+            <intent-filter>
+                <action android:name="android.accounts.LOGIN_ACCOUNTS_CHANGED" />
+                <action android:name="com.amazon.dcp.sso.action.account.added" />
+                <action android:name="com.amazon.dcp.sso.action.account.removed" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.amazon.music.curate.data.PlaylistIntentReceiverService" android:permission="android.permission.BIND_JOB_SERVICE" />
+        <receiver android:exported="true" android:name="com.amazon.music.curate.skyfire.AccountChangedReceiver" android:permission="com.amazon.dcp.sso.permission.account.changed">
+            <intent-filter>
+                <action android:name="com.amazon.dcp.sso.action.account.removed" />
+                <action android:name="com.amazon.dcp.sso.action.account.added" />
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:exported="true" android:name="com.amazon.mp3.store.receiver.CheckLocaleReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="true" android:name="com.amazon.mp3.store.receiver.FirstBootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="true" android:label="@string/dmusic_main_launcher_name" android:name="com.amazon.mp3.amp.widget.PlayerWidgetProvider">
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/player_widget_provider" />
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="false" android:exported="false" android:name="com.amazon.mp3.download.service.AutoDownloadPurchaseReceiver">
+            <intent-filter>
+                <action android:name="com.amazon.mp3.library.service.sync.ACTION_SYNC_EVENT" />
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:exported="true" android:name="com.amazon.music.share.ShareIntentReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="true" android:name="com.amazon.mp3.bluetooth.BluetoothHeadsetReceiver">
+            <intent-filter>
+                <action android:name="android.bluetooth.headset.profile.action.CONNECTION_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="android.app.default_searchable" android:value=".library.activity.ExternalLauncher" />
+        <activity android:exported="true" android:label="TestUtility" android:name="com.amazon.mp3.activity.util.testUtil.TestUtilActivity" />
+        <meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_pdcUWxIfdUCm8kSKTgqIjkhjFtp8Ogqf" />
+        <meta-data android:name="io.branch.sdk.BranchKey.test" android:value="key_test_ihdS1FReeSqj2cTHRbx5OojcBDh6Ldtq" />
+        <activity android:name="com.amazon.mp3.navigation.InvalidDestinationErrorDialogActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:name="com.amazon.mp3.hawkfire.upsell.ConcurrentStreamingUnlimitedFamilyUpsellActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:name="com.amazon.mp3.hawkfire.upsell.ConcurrentStreamingFamilyUpsellActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:name="com.amazon.mp3.hawkfire.upsell.ConcurrentStreamingTakeOverActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:name="com.amazon.mp3.hawkfire.upsell.ConcurrentStreamingUnlimitedFamilyUpsellOneClickActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:name="com.amazon.mp3.playback.activity.ConcurrencyErrorDialogActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <receiver android:exported="true" android:name="com.amazon.mp3.auto.waze.WazeWakeUpReceiver">
+            <intent-filter>
+                <action android:name="com.waze.sdk.audio.ACTION_INIT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <activity android:name="com.amazon.mp3.activity.AudioEffectActivity" android:theme="@style/Theme.AmazonMP3.Equalizer" />
+        <activity android:launchMode="singleTop" android:name="com.amazon.mp3.activity.WideDialogActivity" android:theme="@style/Theme.AmazonMP3.WideDialog" />
+        <activity android:name="com.amazon.mp3.playback.songcredits.SongCreditsActivity" android:theme="@style/Theme.AmazonMP3.SongCredits" />
+        <activity android:name="com.amazon.mp3.prime.upsell.nightwing.AdsPreferenceSettingsActivity" />
+        <activity android:launchMode="singleTask" android:name="com.amazon.mp3.activity.settings.viewer.WidgetViewerActivity" android:theme="@style/Theme.AmazonMP3" />
+        <activity android:launchMode="singleTop" android:name="com.amazon.mp3.audioquality.nerdstats.AudioStatsFragmentActivity" android:theme="@style/Theme.AmazonMP3.NowPlaying" />
+        <activity android:launchMode="singleTop" android:name="com.amazon.mp3.inappfeedback.InAppFeedbackActivity" />
+        <activity android:launchMode="singleTask" android:name="com.amazon.mp3.playback.activity.PlaybackInitializationActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:name="com.amazon.mp3.bluetooth.BluetoothPermissionActivity" android:parentActivityName="com.amazon.mp3.activity.MusicHomeActivity" />
+        <activity android:name="com.amazon.mp3.permission.PermissionActivity" android:parentActivityName="com.amazon.mp3.activity.MusicHomeActivity" android:theme="@style/Theme.AmazonMP3.Invisible" />
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.amazon.mp3.activity.MontanaActivity" android:screenOrientation="fullSensor" android:theme="@style/Theme.AmazonMP3.FullScreen" />
+        <activity android:launchMode="singleTop" android:name="com.amazon.montana.ui.MontanaTestActivity" android:theme="@style/Theme.AmazonMP3.FullScreen" />
+        <service android:exported="false" android:foregroundServiceType="connectedDevice" android:name="com.amazon.music.hearable.rfcomm.BluetoothRFCOMMService" />
+        <receiver android:enabled="true" android:exported="true" android:name="com.amazon.music.hearable.ActionRunReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.RUN" />
+            </intent-filter>
+        </receiver>
+        <service android:exported="false" android:foregroundServiceType="mediaPlayback" android:name="com.amazon.music.media.playback.impl.PlaybackService">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </service>
+        <receiver android:exported="true" android:name="com.amazon.music.media.playback.impl.MediaButtonReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.amazon.mp3.com.squareup.picasso" android:exported="false" android:name="com.squareup.picasso.PicassoProvider" />
+        <service android:enabled="false" android:exported="false" android:name="androidx.car.app.CarAppMetadataHolderService" android:process="">
+            <meta-data android:name="androidx.car.app.CarAppMetadataHolderService.CAR_HARDWARE_MANAGER" android:value="androidx.car.app.hardware.ProjectedCarHardwareManager" />
+        </service>
+        <activity android:exported="false" android:name="androidx.car.app.CarAppPermissionActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <receiver android:exported="false" android:name="androidx.car.app.notification.CarAppNotificationBroadcastReceiver" />
+        <meta-data android:name="com.google.android.play.billingclient.version" android:value="9.0.0" />
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:exported="false" android:name="com.android.billingclient.api.ProxyBillingActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:exported="false" android:name="com.android.billingclient.api.ProxyBillingActivityV2" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <provider android:authorities="com.amazon.mp3.ra.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="com.amazon.alexa.ra.core.data.utils.RaFileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths" />
+        </provider>
+        <receiver android:exported="false" android:name="com.google.android.gms.cast.framework.media.MediaIntentReceiver" />
+        <service android:exported="false" android:name="com.google.android.gms.cast.framework.ReconnectionService" />
+        <receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </receiver>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.messaging.FirebaseMessagingService">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.components.ComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+        </service>
+        <service android:enabled="true" android:exported="false" android:name="androidx.credentials.playservices.CredentialProviderMetadataHolder">
+            <meta-data android:name="androidx.credentials.CREDENTIAL_PROVIDER_KEY" android:value="androidx.credentials.playservices.CredentialProviderPlayServicesImpl" />
+        </service>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize" android:enabled="true" android:exported="false" android:fitsSystemWindows="true" android:name="androidx.credentials.playservices.HiddenActivity" android:theme="@style/Theme.Hidden" />
+        <activity android:excludeFromRecents="true" android:exported="false" android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <service android:exported="true" android:name="com.google.android.gms.auth.api.signin.RevocationBoundService" android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" android:visibleToInstantApps="true" />
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <provider android:authorities="com.amazon.mp3.firebaseinitprovider" android:directBootAware="true" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider" />
+        <activity android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize" android:name="expo.modules.video.FullscreenPlayerActivity" android:supportsPictureInPicture="true" android:theme="@style/Fullscreen" />
+        <service android:exported="false" android:foregroundServiceType="mediaPlayback" android:name="expo.modules.video.playbackService.ExpoVideoPlaybackService">
+            <intent-filter>
+                <action android:name="androidx.media3.session.MediaSessionService" />
+            </intent-filter>
+        </service>
+        <activity android:exported="true" android:multiprocess="true" android:name="androidx.fragment.app.testing.EmptyFragmentActivity" android:taskAffinity="" android:theme="@style/FragmentScenarioEmptyFragmentActivityTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <meta-data android:name="AudioDataSourceType.HlsAudiblePlayer" android:value="com.audible.mobile.player.sdk.AudiblePlayerFactory" />
+        <meta-data android:name="AudioDataSourceType.Mp3AudiblePlayer" android:value="com.audible.mobile.player.sdk.AudiblePlayerFactory" />
+        <meta-data android:name="AudioDataSourceType.AudibleDRM" android:value="com.audible.mobile.player.AudibleReadyPlayerFactory" />
+        <meta-data android:name="AAPConfiguration-audible-android-component-player-common" android:value="com.audible.mobile.player.module.configuration.PlayerCommonModuleConfiguration" />
+        <service android:exported="false" android:foregroundServiceType="dataSync" android:name="com.audible.mobile.download.service.AudiobookDownloadService">
+            <intent-filter>
+                <action android:name="com.audible.mobile.download.action.CANCEL_DOWNLOAD" />
+                <action android:name="com.audible.mobile.download.action.START_DOWNLOAD" />
+                <category android:name="com.audible.mobile.download.category.Audiobook" />
+            </intent-filter>
+        </service>
+        <service android:exported="false" android:foregroundServiceType="dataSync" android:name="com.audible.mobile.download.service.CoverArtDownloadService">
+            <intent-filter>
+                <action android:name="com.audible.mobile.download.action.CANCEL_DOWNLOAD" />
+                <action android:name="com.audible.mobile.download.action.START_DOWNLOAD" />
+                <category android:name="com.audible.mobile.download.category.CoverArt" />
+            </intent-filter>
+        </service>
+        <service android:exported="false" android:foregroundServiceType="dataSync" android:name="com.audible.mobile.download.service.PositionSyncDownloadService">
+            <intent-filter>
+                <action android:name="com.audible.mobile.download.action.CANCEL_DOWNLOAD" />
+                <action android:name="com.audible.mobile.download.action.START_DOWNLOAD" />
+                <category android:name="com.audible.mobile.download.category.PositionSync" />
+            </intent-filter>
+        </service>
+        <service android:exported="false" android:foregroundServiceType="dataSync" android:name="com.audible.mobile.download.service.SampleAudiobookDownloadService">
+            <intent-filter>
+                <action android:name="com.audible.mobile.download.action.CANCEL_DOWNLOAD" />
+                <action android:name="com.audible.mobile.download.action.START_DOWNLOAD" />
+                <category android:name="com.audible.mobile.download.category.SampleAudiobook" />
+            </intent-filter>
+        </service>
+        <service android:exported="false" android:foregroundServiceType="dataSync" android:name="com.audible.mobile.download.service.SamplePositionSyncDownloadService">
+            <intent-filter>
+                <action android:name="com.audible.mobile.download.action.CANCEL_DOWNLOAD" />
+                <action android:name="com.audible.mobile.download.action.START_DOWNLOAD" />
+                <category android:name="com.audible.mobile.download.category.SamplePositionSync" />
+            </intent-filter>
+        </service>
+        <meta-data android:name="AAPMetadata-Audible-API-BaseUrl" android:value="https://api.audible.com/1.0" />
+        <provider android:authorities="com.amazon.mp3.audibleStats" android:exported="false" android:name="com.audible.playersdk.stats.data.persistence.localDatabase.sqlite.DefaultStatsContentProvider" />
+        <activity android:name="com.amplifyframework.devmenu.DeveloperMenuActivity" android:theme="@style/OverlayActivity" />
+        <service android:enabled="false" android:exported="false" android:name="com.google.android.gms.metadata.ModuleDependencies">
+            <intent-filter>
+                <action android:name="com.google.android.gms.metadata.MODULE_DEPENDENCIES" />
+            </intent-filter>
+            <meta-data android:name="photopicker_activity:0:required" android:value="" />
+        </service>
+        <activity android:exported="false" android:name="com.canhub.cropper.CropImageActivity" android:theme="@style/Base.Theme.AppCompat" />
+        <provider android:authorities="com.amazon.mp3.ImagePickerFileProvider" android:exported="false" android:grantUriPermissions="true" android:name="expo.modules.imagepicker.fileprovider.ImagePickerFileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/image_picker_provider_paths" />
+        </provider>
+        <provider android:authorities="com.amazon.mp3.cropper.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="com.canhub.cropper.CropFileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/library_file_paths" />
+        </provider>
+        <provider android:authorities="com.amazon.mp3.FileSystemFileProvider" android:exported="false" android:grantUriPermissions="true" android:name="expo.modules.filesystem.FileSystemFileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_system_provider_paths" />
+        </provider>
+        <meta-data android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule" android:value="GlideModule" />
+        <activity android:exported="true" android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity" android:theme="@style/WhiteBackgroundTheme">
+            <intent-filter android:priority="-100">
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:exported="true" android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity" android:theme="@style/WhiteBackgroundTheme">
+            <intent-filter android:priority="-100">
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:exported="true" android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity" android:theme="@style/WhiteBackgroundDialogTheme">
+            <intent-filter android:priority="-100">
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <provider android:authorities="com.amazon.mp3.imagepickerprovider" android:exported="false" android:grantUriPermissions="true" android:name="com.imagepicker.ImagePickerProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/imagepicker_provider_paths" />
+        </provider>
+        <provider android:authorities="com.amazon.mp3.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_provider_paths" />
+        </provider>
+        <meta-data android:name="org.unimodules.core.AppLoader#react-native-headless" android:value="expo.modules.adapters.react.apploader.RNHeadlessAppLoader" />
+        <meta-data android:name="com.facebook.soloader.enabled" android:value="true" />
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:name="androidx.work.impl.background.systemalarm.SystemAlarmService" />
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_job_service_default" android:exported="true" android:name="androidx.work.impl.background.systemjob.SystemJobService" android:permission="android.permission.BIND_JOB_SERVICE" />
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="false" android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver" />
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_OKAY" />
+                <action android:name="android.intent.action.BATTERY_LOW" />
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver">
+            <intent-filter>
+                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="true" android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver" android:permission="android.permission.DUMP">
+            <intent-filter>
+                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.amazon.mp3.resources.AndroidContextProvider" android:enabled="true" android:exported="false" android:name="org.jetbrains.compose.resources.AndroidContextProvider" />
+        <uses-library android:name="androidx.window.extensions" android:required="false" />
+        <uses-library android:name="androidx.window.sidecar" android:required="false" />
+        <activity android:exported="true" android:name="androidx.activity.ComponentActivity" android:theme="@android:style/Theme.Material.Light.NoActionBar" />
+        <activity android:exported="true" android:name="androidx.compose.ui.tooling.PreviewActivity" />
+        <service android:directBootAware="true" android:exported="false" android:name="androidx.room.MultiInstanceInvalidationService" />
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="true" android:name="androidx.profileinstaller.ProfileInstallReceiver" android:permission="android.permission.DUMP">
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+            </intent-filter>
+        </receiver>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery">
+            <meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct" />
+        </service>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE" />
+        <receiver android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver" />
+        <provider android:authorities="com.amazon.mp3.bugsnag-startup" android:exported="false" android:initOrder="9000" android:name="com.bugsnag.android.internal.BugsnagContentProvider" />
+        <uses-library android:name="sekiuos-supplement-hzplatformclientcore" android:required="false" />
+        <provider android:authorities="com.amazon.mp3.start.time.provider" android:exported="false" android:initOrder="200" android:name="com.oblador.performance.StartTimeProvider" />
+        <activity android:name="com.amazon.identity.auth.device.activity.GetAuthenticatorResultsActivity" android:theme="@style/TransparentActivityTheme" />
+        <provider android:authorities="com.amazon.identity.auth.device.CrossAppContextProvider.com.amazon.mp3" android:directBootAware="true" android:exported="true" android:name="com.amazon.identity.auth.device.api.CrossAppContextProvider">
+            <intent-filter>
+                <action android:name="com.amazon.identity.action.CROSS_APP_CONTEXT_PROVIDER" />
+            </intent-filter>
+        </provider>
+        <activity android:configChanges="@integer/config_maskLocaleOrientationKeyboardKeyboardHiddenLayoutDirectionScreenSize" android:exported="false" android:label="Amazon Auth Challenge" android:name="com.amazon.identity.auth.device.activity.AuthChallengeHandleActivity" android:permission="com.amazon.identity.auth.device.perm.AUTH_SDK" />
+        <activity android:configChanges="@integer/config_maskLocaleOrientationKeyboardKeyboardHiddenLayoutDirectionScreenSize" android:exported="false" android:label="Sign up and enroll" android:name="com.amazon.identity.auth.device.activity.ActorSignUpAndEnrollActivity" android:permission="com.amazon.identity.auth.device.perm.AUTH_SDK" />
+        <activity android:configChanges="@integer/config_maskLocaleOrientationKeyboardKeyboardHiddenLayoutDirectionScreenSize" android:exported="false" android:label="Enroll actor UI" android:name="com.amazon.identity.auth.device.activity.ActorEnrollActivity" android:permission="com.amazon.identity.auth.device.perm.AUTH_SDK" />
+        <activity android:configChanges="@integer/config_maskLocaleOrientationKeyboardKeyboardHiddenLayoutDirectionScreenSize" android:exported="false" android:label="Update Pin Preference UI" android:name="com.amazon.identity.auth.device.activity.ActorUpdatePinPreferenceActivity" android:permission="com.amazon.identity.auth.device.perm.AUTH_SDK" />
+        <activity android:configChanges="@integer/config_maskLocaleOrientationKeyboardKeyboardHiddenLayoutDirectionScreenSize" android:exported="false" android:label="Update Phone Number UI" android:name="com.amazon.identity.auth.device.activity.ActorUpdatePhoneNumberActivity" android:permission="com.amazon.identity.auth.device.perm.AUTH_SDK" />
+        <activity android:configChanges="@integer/config_maskLocaleOrientationKeyboardKeyboardHiddenLayoutDirectionScreenSize" android:exported="false" android:name="com.amazon.identity.auth.device.api.ProfilePickerUIActivity" android:permission="com.amazon.identity.auth.device.perm.AUTH_SDK" />
+        <activity android:configChanges="@integer/config_maskLocaleOrientationKeyboardKeyboardHiddenLayoutDirectionScreenSize" android:exported="false" android:label="Update Pin UI" android:name="com.amazon.identity.auth.device.activity.ActorUpdatePinActivity" android:permission="com.amazon.identity.auth.device.perm.AUTH_SDK" />
+        <activity android:configChanges="locale|orientation|screenSize|layoutDirection" android:exported="true" android:launchMode="singleTask" android:name="com.amazon.identity.auth.device.customtabs.CustomTabProxyActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:host="amazon.com" android:pathPrefix="/CloseInAppBrowser" android:scheme="com.amazon.mobile.identity.verification" />
+            </intent-filter>
+        </activity>
+        <service android:enabled="false" android:exported="true" android:name="com.amazon.identity.auth.device.bootstrapSSO.BootstrapSSOService">
+            <intent-filter>
+                <action android:name="com.amazon.identity.action.BOOTSTRAP_SSO" />
+            </intent-filter>
+        </service>
+        <service android:exported="false" android:name="com.amazon.identity.auth.device.storage.DirtyDataSyncingService">
+            <intent-filter>
+                <action android:name="com.amazon.identity.action.SYNC_DIRTY_DATA" />
+            </intent-filter>
+        </service>
+        <service android:exported="false" android:name="com.amazon.identity.auth.device.storage.DatabaseCleaner$DatabaseCleaningService">
+            <intent-filter>
+                <action android:name="com.amazon.identity.action.CLEAN_DATA" />
+            </intent-filter>
+        </service>
+        <receiver android:enabled="false" android:exported="false" android:name="com.amazon.identity.auth.device.storage.LambortishClock$ChangeTimestampsBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET" />
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="com.amazon.identity.auth.accounts.SessionUserChangedToAccountForPackageChangedAdpater">
+            <intent-filter>
+                <action android:name="com.amazon.dcp.sso.action.session.users.changed" />
+            </intent-filter>
+        </receiver>
+        <property android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY" android:value="true" />
+        <activity android:exported="false" android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity" android:stateNotNeeded="true" android:theme="@style/Theme.PlayCore.Transparent" />
+    <activity android:exported="true" android:label="Amazon Music TV Plus" android:launchMode="singleTop" android:name="com.soum91.amazonmusictv.TvActivity" android:screenOrientation="landscape" android:theme="@android:style/Theme.Material.NoActionBar" android:supportsPictureInPicture="true" android:resizeableActivity="true" android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout"><intent-filter><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LEANBACK_LAUNCHER" /><category android:name="android.intent.category.LAUNCHER" /></intent-filter></activity><service android:name="com.soum91.amazonmusictv.TvPlaybackService" android:exported="false" android:foregroundServiceType="mediaPlayback" android:stopWithTask="false" /><service android:name="com.soum91.amazonmusictv.TvDreamService" android:exported="true" android:permission="android.permission.BIND_DREAM_SERVICE" android:label="Amazon Music artwork"><intent-filter><action android:name="android.service.dreams.DreamService" /></intent-filter></service></application>
+<uses-feature android:name="android.software.leanback" android:required="false" /><uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /></manifest>
