@@ -9,7 +9,7 @@ Private Google TV adaptation for a Sony A80L / Vizio Elevate setup. Uses the sup
 - Retains the previously tested playback path, Atmos preference and best-available lossless fallback. Amazon authentication, entitlement checks and DRM are unchanged.
 - Displays the **selected** stream quality and the engine's reported output device, with a timestamped transition history. This does not measure the final HDMI signal or establish that Amazon rejected a device.
 - Adds system PiP, including playback actions, when the firmware advertises support. Automatic PiP is optional.
-- Adds an optional non-focusable floating mini-player over Home or other apps. Android's display-over-other-apps permission must be granted by the user. Home retains D-pad focus; remote media keys control playback. Reopen the app or use the media notification for controls.
+- Adds an optional non-focusable floating mini-player over Home or other apps. Android's display-over-other-apps permission must be granted by the user. Home retains D-pad focus; remote media keys control playback. Reopen the app or use the media notification for controls. Settings includes Hide dock and Move dock actions for D-pad remotes.
 - Publishes a foreground MediaStyle notification using the original active media-session token. The system can expose playback controls on supported Home, lock and notification surfaces; their placement is controlled by the TV firmware/launcher.
 - Adds an optional artwork DreamService, selectable in the system screensaver settings. It is an ambient music display, not a replacement for device security.
 
