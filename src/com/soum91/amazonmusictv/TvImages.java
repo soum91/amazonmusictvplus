@@ -12,10 +12,22 @@ public final class TvImages {
     private static final ExecutorService pool=Executors.newFixedThreadPool(3);
     private static final Handler main=new Handler(Looper.getMainLooper());
     private static final LruCache<String,Bitmap> cache=new LruCache<String,Bitmap>(8*1024*1024){protected int sizeOf(String k,Bitmap b){return b.getAllocationByteCount();}};
+    private static final java.util.Map<String,java.util.List<java.lang.ref.WeakReference<ImageView>>> waiting=new java.util.HashMap<>();
     public static void load(Context c,Uri uri,ImageView view){
         if(view==null)return;view.setTag(uri);view.setImageDrawable(null);if(uri==null)return;
         Bitmap b=cache.get(uri.toString());if(b!=null){view.setImageBitmap(b);return;}
-        Context app=c.getApplicationContext();pool.execute(()->{Bitmap result=read(app,uri);if(result!=null)cache.put(uri.toString(),result);main.post(()->{if(uri.equals(view.getTag())&&result!=null)view.setImageBitmap(result);});});
+        String key=uri.toString();
+        synchronized(waiting){
+            java.util.List<java.lang.ref.WeakReference<ImageView>> views=waiting.get(key);
+            if(views!=null){views.add(new java.lang.ref.WeakReference<ImageView>(view));return;}
+            views=new java.util.ArrayList<>();views.add(new java.lang.ref.WeakReference<ImageView>(view));waiting.put(key,views);
+        }
+        Context app=c.getApplicationContext();pool.execute(()->{
+            Bitmap result=read(app,uri);if(result!=null)cache.put(key,result);
+            java.util.List<java.lang.ref.WeakReference<ImageView>> views;
+            synchronized(waiting){views=waiting.remove(key);}
+            main.post(()->{if(views!=null&&result!=null)for(java.lang.ref.WeakReference<ImageView> ref:views){ImageView target=ref.get();if(target!=null&&uri.equals(target.getTag()))target.setImageBitmap(result);}});
+        });
     }
     public static Bitmap cached(Uri uri){return uri==null?null:cache.get(uri.toString());}
     private static Bitmap read(Context c,Uri uri){
@@ -32,3 +44,4 @@ public final class TvImages {
         URLConnection con=new URL(uri.toString()).openConnection();con.setConnectTimeout(5000);con.setReadTimeout(5000);return con.getInputStream();
     }
 }
+

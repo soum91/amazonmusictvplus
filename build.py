@@ -19,7 +19,7 @@ def main():
     p.add_argument('--tv-apk', required=True, type=Path)
     p.add_argument('--signing-dir', default=ROOT/'signing', type=Path)
     p.add_argument('--work', default=ROOT/'build', type=Path)
-    p.add_argument('--build-number', default=3, type=int)
+    p.add_argument('--build-number', default=4, type=int)
     a = p.parse_args()
     if a.build_number < 1: raise ValueError('Build number must be positive')
     if hashlib.file_digest(a.bundle.open('rb'),'sha256').hexdigest() != INPUT_SHA256:
@@ -43,6 +43,12 @@ def main():
     run(['java','-Xmx2g','-cp',tools/'apkeditor.jar','org.jf.baksmali.Main','d','--api','31',w/'primary.dex','-o',primary])
     shutil.copytree(ROOT/'patches',primary,dirs_exist_ok=True)
     run(['java','-Xmx2g','-cp',tools/'apkeditor.jar','org.jf.smali.Main','a','--api','31',primary,'-o',w/'decoded/classes.dex'])
+    with zipfile.ZipFile(split/'base.apk') as z:(w/'engine15.dex').write_bytes(z.read('classes15.dex'))
+    engine=w/'smali15'
+    if engine.exists():shutil.rmtree(engine)
+    run(['java','-Xmx2g','-cp',tools/'apkeditor.jar','org.jf.baksmali.Main','d','--api','31',w/'engine15.dex','-o',engine])
+    shutil.copytree(ROOT/'patches15',engine,dirs_exist_ok=True)
+    run(['java','-Xmx2g','-cp',tools/'apkeditor.jar','org.jf.smali.Main','a','--api','31',engine,'-o',w/'decoded/classes15.dex'])
     compiled=w/'compiled';compiled.mkdir(exist_ok=True)
     jar('ecj','-8','-nowarn','-classpath',tools/'android.jar','-d',compiled,*sorted((ROOT/'src').rglob('*.java')))
     with zipfile.ZipFile(w/'ui.jar','w') as z:
@@ -63,3 +69,4 @@ def main():
     print(dest)
 
 if __name__=='__main__':main()
+

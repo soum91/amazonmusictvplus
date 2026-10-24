@@ -3,7 +3,7 @@
 from pathlib import Path
 import py_compile,xml.etree.ElementTree as E
 root=Path(__file__).resolve().parents[1]
-for name in ['build.py','port_tv_resources.py','tools/bootstrap.py']:py_compile.compile(str(root/name),doraise=True)
+for name in ['build.py','update_build.py','port_tv_resources.py','tools/bootstrap.py']:py_compile.compile(str(root/name),doraise=True)
 a='{http://schemas.android.com/apk/res/android}';r=E.parse(root/'AndroidManifest.xml').getroot();app=r.find('application')
 activity=next(e for e in app.findall('activity') if e.get(a+'name')=='com.soum91.amazonmusictv.TvActivity')
 assert activity.get(a+'supportsPictureInPicture')=='true'
@@ -16,3 +16,4 @@ assert services['com.soum91.amazonmusictv.TvPlaybackService'].get(a+'exported')=
 assert services['com.soum91.amazonmusictv.TvDreamService'].get(a+'permission')=='android.permission.BIND_DREAM_SERVICE'
 assert not list(root.glob('signing/*')) or (root/'.gitignore').read_text().find('signing/')>=0
 print('Launcher, PiP, media foreground service and screensaver declarations checked')
+

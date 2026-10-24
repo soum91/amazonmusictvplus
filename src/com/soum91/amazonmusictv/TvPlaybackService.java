@@ -20,7 +20,9 @@ public final class TvPlaybackService extends Service {
  private static final String CHANNEL="amazon_music_tv_playback";private static final int NOTIFICATION=8303;
  private MediaBrowser browser;private MediaController controller;private final Handler handler=new Handler(Looper.getMainLooper());
  private final ArrayDeque<String> pending=new ArrayDeque<>();private WindowManager windows;private View dock;private WindowManager.LayoutParams dockParams;
- private TextView dockTitle;private ImageView dockArt;private String lastNotification="";private boolean dockWanted;
+ private TextView dockTitle;private ImageView dockArt;private String lastNotification="";private boolean dockWanted;private int lastRoutedState=-1;
+ private static volatile boolean uiVisible;private static java.lang.ref.WeakReference<TvPlaybackService> running=new java.lang.ref.WeakReference<TvPlaybackService>(null);
+ public static void setUiVisible(boolean visible){uiVisible=visible;TvPlaybackService service=running.get();if(service!=null)service.handler.post(()->{if(uiVisible)service.hideDock();else if(service.dockWanted)service.showDock();});}
  private final Runnable ticker=new Runnable(){public void run(){publish();handler.postDelayed(this,1500);}};
  public static void start(Context c,String action){Intent in=new Intent(c,TvPlaybackService.class).setAction(action);if(Build.VERSION.SDK_INT>=26)c.startForegroundService(in);else c.startService(in);}
  static PendingIntent intent(Context c,String action){return PendingIntent.getService(c,action.hashCode(),new Intent(c,TvPlaybackService.class).setAction(action),PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);}
@@ -33,7 +35,7 @@ public final class TvPlaybackService extends Service {
    PlaybackState state=controller.getPlaybackState();if(state!=null&&state.getState()==PlaybackState.STATE_PLAYING)session.getClass().getMethod("setActive",boolean.class).invoke(session,true);
   }catch(Exception e){android.util.Log.w("AmazonMusicTV","Could not update session return activity",e);}
  }
- @Override public void onCreate(){super.onCreate();NotificationChannel channel=new NotificationChannel(CHANNEL,"Amazon Music playback",NotificationManager.IMPORTANCE_LOW);channel.setDescription("Playback controls on supported Home and lock screens");channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);getSystemService(NotificationManager.class).createNotificationChannel(channel);windows=(WindowManager)getSystemService(WINDOW_SERVICE);
+ @Override public void onCreate(){super.onCreate();running=new java.lang.ref.WeakReference<TvPlaybackService>(this);NotificationChannel channel=new NotificationChannel(CHANNEL,"Amazon Music playback",NotificationManager.IMPORTANCE_LOW);channel.setDescription("Playback controls on supported Home and lock screens");channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);getSystemService(NotificationManager.class).createNotificationChannel(channel);windows=(WindowManager)getSystemService(WINDOW_SERVICE);
   browser=new MediaBrowser(this,new ComponentName(this,"com.amazon.mp3.auto.AutoMusicService"),new MediaBrowser.ConnectionCallback(){public void onConnected(){controller=new MediaController(TvPlaybackService.this,browser.getSessionToken());routeSession(TvPlaybackService.this,controller);while(!pending.isEmpty())command(pending.removeFirst());if(dockWanted)showDock();publish();}public void onConnectionFailed(){stopSelf();}public void onConnectionSuspended(){controller=null;lastNotification="";}},null);browser.connect();handler.post(ticker);
  }
  @Override public int onStartCommand(Intent in,int flags,int startId){startForeground(NOTIFICATION,notification());String action=in==null?PLAYBACK:in.getAction();if(DOCK.equals(action)){dockWanted=true;showDock();}else if(UNDOCK.equals(action)){dockWanted=false;hideDock();}else if(MOVE.equals(action)){if(dockParams!=null){dockParams.gravity=dockParams.gravity==(Gravity.BOTTOM|Gravity.END)?(Gravity.BOTTOM|Gravity.START):(Gravity.BOTTOM|Gravity.END);windows.updateViewLayout(dock,dockParams);}}else if(STOP.equals(action)){if(controller!=null)controller.getTransportControls().pause();stopSelf();return START_NOT_STICKY;}else if(!PLAYBACK.equals(action)){if(controller==null)pending.add(action);else command(action);}return START_NOT_STICKY;}
@@ -47,13 +49,13 @@ public final class TvPlaybackService extends Service {
   if(d!=null){Bitmap art=TvImages.cached(d.getIconUri());if(art!=null)b.setLargeIcon(art);}return b.build();
  }
  private void publish(){
-  if(controller==null)return;routeSession(this,controller);MediaMetadata m=controller.getMetadata();MediaDescription d=m==null?null:m.getDescription();PlaybackState s=controller.getPlaybackState();TvBridge.recordDiagnostics(this);
+  if(controller==null)return;MediaMetadata m=controller.getMetadata();MediaDescription d=m==null?null:m.getDescription();PlaybackState s=controller.getPlaybackState();int state=s==null?0:s.getState();if(state!=lastRoutedState){lastRoutedState=state;routeSession(this,controller);}TvBridge.recordDiagnostics(this);
   String key=String.valueOf(d==null?null:d.getMediaId())+":"+(s==null?0:s.getState())+":"+TvBridge.qualitySummary()+":"+(d!=null&&TvImages.cached(d.getIconUri())!=null)+":"+(dock!=null);
   if(!key.equals(lastNotification)){lastNotification=key;getSystemService(NotificationManager.class).notify(NOTIFICATION,notification());}
-  if(dock!=null&&d!=null){dockTitle.setText(d.getTitle()+"\n"+String.valueOf(d.getSubtitle())+"\n"+TvBridge.qualitySummary());if(!String.valueOf(d.getIconUri()).equals(String.valueOf(dockArt.getTag())))TvImages.load(this,d.getIconUri(),dockArt);}
+  if(dock!=null&&d!=null){String label=d.getTitle()+"\n"+String.valueOf(d.getSubtitle())+"\n"+TvBridge.qualitySummary();if(!android.text.TextUtils.equals(dockTitle.getText(),label))dockTitle.setText(label);if(!String.valueOf(d.getIconUri()).equals(String.valueOf(dockArt.getTag())))TvImages.load(this,d.getIconUri(),dockArt);}
  }
  private int dp(int n){return Math.round(n*getResources().getDisplayMetrics().density);}
- private void showDock(){if(dock!=null||!Settings.canDrawOverlays(this))return;
+ private void showDock(){if(uiVisible||dock!=null||!Settings.canDrawOverlays(this))return;
   LinearLayout panel=new LinearLayout(this);panel.setGravity(Gravity.CENTER_VERTICAL);panel.setPadding(dp(12),dp(10),dp(10),dp(10));panel.setBackgroundColor(0xf21e2222);
   dockArt=new ImageView(this);dockArt.setScaleType(ImageView.ScaleType.CENTER_CROP);panel.addView(dockArt,new LinearLayout.LayoutParams(dp(68),dp(68)));
   dockTitle=new TextView(this);dockTitle.setText("Amazon Music");dockTitle.setTextColor(Color.WHITE);dockTitle.setTextSize(14);dockTitle.setPadding(dp(12),0,dp(8),0);panel.addView(dockTitle,new LinearLayout.LayoutParams(dp(230),-2));
@@ -64,6 +66,7 @@ public final class TvPlaybackService extends Service {
   try{windows.addView(panel,dockParams);dock=panel;lastNotification="";publish();}catch(RuntimeException e){dockWanted=false;Toast.makeText(this,"Floating dock is unavailable on this TV",Toast.LENGTH_LONG).show();}
  }
  private void hideDock(){if(dock!=null){try{windows.removeView(dock);}catch(RuntimeException ignored){}dock=null;lastNotification="";}}
- @Override public void onDestroy(){handler.removeCallbacks(ticker);hideDock();if(browser!=null)browser.disconnect();stopForeground(true);super.onDestroy();}
+ @Override public void onDestroy(){running.clear();handler.removeCallbacks(ticker);hideDock();if(browser!=null)browser.disconnect();stopForeground(true);super.onDestroy();}
  @Override public IBinder onBind(Intent intent){return null;}
 }
+
