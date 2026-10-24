@@ -17,3 +17,11 @@ assert services['com.soum91.amazonmusictv.TvDreamService'].get(a+'permission')==
 assert not list(root.glob('signing/*')) or (root/'.gitignore').read_text().find('signing/')>=0
 print('Launcher, PiP, media foreground service and screensaver declarations checked')
 
+
+
+permissions={e.get(a+'name') for e in r.findall('uses-permission')}
+assert 'android.permission.WAKE_LOCK' in permissions
+security=E.parse(root/'res/xml/network_security_config_release.xml').getroot()
+assert security.find('base-config').get('cleartextTrafficPermitted')=='false'
+assert {d.text for config in security.findall('domain-config') if config.get('cleartextTrafficPermitted')=='true' for d in config.findall('domain')}=={'127.0.0.1'}
+print('Playback wake-lock permission and localhost-only cleartext exception checked')

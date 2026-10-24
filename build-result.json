@@ -1,26 +1,28 @@
 {
-  "filename": "Amazon-Music-TV-26.36.1-tv.4-arm32.apk",
-  "sha256": "8620a8037b20fca056fc7b41f5fa71e9cc63a63941c890edc04b68ae00a5fcf0",
-  "size_bytes": 133380719,
+  "filename": "Amazon-Music-TV-26.36.1-tv.5-arm32.apk",
+  "sha256": "9593a8d9527a2f5761511a9d7dbbaf58af4565de26b34e25966c7f0bde40dccb",
+  "size_bytes": 136657586,
   "signer_sha256": "99bec8a3a491133fc24e245459b5c5c2a5bddbf2b7fdff498808bcd8c78d6125",
-  "version_code": 526360114,
+  "version_code": 526360115,
+  "base_build": 4,
   "validation": [
     "Java UI and services compile against API 35",
-    "compiled Java matches the packaged build",
-    "single read-only observer call is the only routing-monitor instruction change",
-    "classes15 method count 65531 remains below the DEX limit",
-    "all 52 ARM32 native libraries unchanged from build 3",
-    "all 16 other existing dex files unchanged; classes15 instrumented and classes18 rebuilt",
+    "compiled Java classes match packaged build",
+    "all 17 existing playback dex files unchanged from build 4",
+    "all 52 ARM32 native libraries unchanged from build 4",
+    "localhost-only HTTP exception retains default cleartext prohibition and system trust anchors",
+    "foreground media service, wake-lock permission and launcher declarations checked",
     "ZIP integrity",
-    "same signing certificate as builds 1 through 3",
+    "same signing certificate as builds 1 through 4",
     "zipalign and APK v3 signature verified",
     "higher version code"
   ],
   "not_tested": [
-    "UI responsiveness on Sony A80L",
-    "actual AudioTrack observations on the TV",
-    "sustained HDMI Atmos and soundbar detection",
-    "final UHD HDMI resolution",
-    "dock foreground lifecycle on TV firmware"
-  ]
+    "hold-OK focus jump and focus restoration on Sony remote",
+    "OLED black-screen lifecycle on TV",
+    "Sony localhost Picture off API and key authentication",
+    "continued HDMI audio during actual TV standby",
+    "sustained Atmos/UHD on build 5"
+  ],
+  "user_reported_baseline": "Build 4 delivered Atmos with Timbre left running."
 }

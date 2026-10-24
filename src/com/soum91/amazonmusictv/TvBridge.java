@@ -90,8 +90,15 @@ public final class TvBridge {
     }
     public static String playbackStats() {return snapshot.stats;}
     public static String qualitySummary() {return snapshot.summary;}
-    public static String diagnostics(Context c) {requestRefresh(c);return snapshot.details;}
+    public static String diagnostics(Context c) {requestRefresh(c);return snapshot.details+"\n\nScreen / standby history:\n"+c.getSharedPreferences("amazon_music_tv",0).getString("power_history","No screen events recorded yet.")+"\n\nFrame/position samples:\n"+c.getSharedPreferences("amazon_music_tv",0).getString("power_samples","None yet.")+"\nThese samples do not prove HDMI audio continued throughout standby.";}
     public static void recordDiagnostics(Context c) {requestRefresh(c);}
+    public static void notePowerEvent(Context c,String event){
+        Context app=c.getApplicationContext();monitor.execute(()->{
+            StringBuilder line=new StringBuilder(java.text.DateFormat.getTimeInstance().format(new java.util.Date())).append(" · ").append(event);
+            try{Object p=player;if(p!=null)line.append("\nEngine time (raw): ").append(call(p,"getCurrentTime"));AudioTrack track=observedTrack.get();if(track!=null&&track.getState()==AudioTrack.STATE_INITIALIZED)line.append("\nSession: ").append(track.getAudioSessionId()).append(" · frame counter: ").append(Integer.toUnsignedLong(track.getPlaybackHeadPosition())).append(" · state: ").append(track.getPlayState()).append(" · ").append(encodingName(track.getFormat().getEncoding())).append("\nRoute: ").append(describeDevice(track.getRoutedDevice()));}catch(Exception e){line.append("\nOutput changed during sampling.");}
+            android.content.SharedPreferences prefs=app.getSharedPreferences("amazon_music_tv",0);String history=line+"\n\n"+prefs.getString("power_samples","");if(history.length()>4500)history=history.substring(0,4500);prefs.edit().putString("power_samples",history).apply();
+        });
+    }
     private static String encodingName(int encoding) {
         switch(encoding) {
             case AudioFormat.ENCODING_E_AC3_JOC:return "DD+ JOC";
@@ -166,3 +173,4 @@ public final class TvBridge {
         snapshot=new Snapshot(summary,stats,details.toString());
     }
 }
+

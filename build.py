@@ -19,7 +19,7 @@ def main():
     p.add_argument('--tv-apk', required=True, type=Path)
     p.add_argument('--signing-dir', default=ROOT/'signing', type=Path)
     p.add_argument('--work', default=ROOT/'build', type=Path)
-    p.add_argument('--build-number', default=4, type=int)
+    p.add_argument('--build-number', default=5, type=int)
     a = p.parse_args()
     if a.build_number < 1: raise ValueError('Build number must be positive')
     if hashlib.file_digest(a.bundle.open('rb'),'sha256').hexdigest() != INPUT_SHA256:
@@ -37,6 +37,7 @@ def main():
     generate(w/'tv-reference',w/'tv-port')
     shutil.copytree(w/'tv-port/res',w/'decoded/res',dirs_exist_ok=True)
     shutil.copytree(w/'tv-port/assets',w/'decoded/assets',dirs_exist_ok=True)
+    shutil.copytree(ROOT/'res',w/'decoded/res',dirs_exist_ok=True)
     with zipfile.ZipFile(split/'base.apk') as z:(w/'primary.dex').write_bytes(z.read('classes.dex'))
     primary=w/'smali'
     if primary.exists():shutil.rmtree(primary)
@@ -69,4 +70,5 @@ def main():
     print(dest)
 
 if __name__=='__main__':main()
+
 
