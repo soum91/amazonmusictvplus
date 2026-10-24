@@ -66,3 +66,7 @@ python3 update_build.py /path/to/Amazon-Music-TV-26.36.1-tv.3-arm32.apk \
 ```
 
 The script verifies the exact build 3 hash, recompiles classes18.dex, inserts the single observer call into the original classes15.dex routing monitor, increments the version, and signs with the existing private key. The two original primary-dex patches remain unchanged. A complete build from the two original source packages also applies patches15/ through build.py.
+
+## Release distribution
+
+Publish signed APK builds through GitHub Releases in this private repository. Attach the versioned APK and its SHA-256 checksum, and provide a copyable browser release/download URL as the primary distribution link. Reuse the existing package ID and private signing key, and increment the version code for install-over updates. Keep signing keys and credentials out of Git and release assets. Verify the published release and its APK asset before reporting publication as complete.
