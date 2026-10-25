@@ -19,7 +19,7 @@ def main():
     p.add_argument('--tv-apk', required=True, type=Path)
     p.add_argument('--signing-dir', default=ROOT/'signing', type=Path)
     p.add_argument('--work', default=ROOT/'build', type=Path)
-    p.add_argument('--build-number', default=5, type=int)
+    p.add_argument('--build-number', default=6, type=int)
     a = p.parse_args()
     if a.build_number < 1: raise ValueError('Build number must be positive')
     if hashlib.file_digest(a.bundle.open('rb'),'sha256').hexdigest() != INPUT_SHA256:
@@ -70,5 +70,6 @@ def main():
     print(dest)
 
 if __name__=='__main__':main()
+
 
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rebuild the UI and read-only AudioTrack probe from the verified build 3 or 4 APK."""
+"""Rebuild the UI and read-only AudioTrack probe from a verified signed APK."""
 import argparse,hashlib,json,shutil,zipfile
 from pathlib import Path
 from build import ROOT,run
@@ -10,11 +10,11 @@ def main():
     p.add_argument('--tools',required=True,type=Path)
     p.add_argument('--signing-dir',required=True,type=Path)
     p.add_argument('--work',default=ROOT/'build',type=Path)
-    p.add_argument('--build-number',default=5,type=int)
+    p.add_argument('--build-number',default=6,type=int)
     a=p.parse_args()
-    versions={'37a491724d86ac37292a167a308c279c13730cbe95c11b2aa79257444754a736':3,'8620a8037b20fca056fc7b41f5fa71e9cc63a63941c890edc04b68ae00a5fcf0':4}
+    versions={'37a491724d86ac37292a167a308c279c13730cbe95c11b2aa79257444754a736':3,'8620a8037b20fca056fc7b41f5fa71e9cc63a63941c890edc04b68ae00a5fcf0':4,'9593a8d9527a2f5761511a9d7dbbaf58af4565de26b34e25966c7f0bde40dccb':5}
     version=versions.get(hashlib.file_digest(a.base_apk.open('rb'),'sha256').hexdigest())
-    if version is None:raise ValueError('Expected a verified signed build 3 or 4 APK')
+    if version is None:raise ValueError('Expected a verified signed build 3, 4 or 5 APK')
     if a.build_number<=version:raise ValueError('Update version must exceed the base APK version')
     tools=a.tools.resolve();w=a.work.resolve();w.mkdir(parents=True,exist_ok=True)
     def jar(name,*args):return run(['java','-Xmx2g','-jar',tools/(name+'.jar'),*args])
@@ -43,4 +43,5 @@ def main():
     shutil.copyfile(next(signed.glob('*.apk')),output);print(output)
 
 if __name__=='__main__':main()
+
 

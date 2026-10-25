@@ -11,6 +11,11 @@ public final class TvBridge {
     private static volatile Context appContext;
     private static volatile String lastError = "";
     private static String lastSelection="";
+    private static String lastSong="";
+    public static void noteSong(Context c,String id,String title){
+        String key=id+"|"+title;if(key.equals(lastSong))return;lastSong=key;
+        final Context app=c.getApplicationContext();monitor.execute(()->{try{sample(app);android.content.SharedPreferences prefs=app.getSharedPreferences("amazon_music_tv",0);String history=java.text.DateFormat.getTimeInstance().format(new java.util.Date())+"  "+title+"\n"+snapshot.stats+"\n\n"+prefs.getString("song_audio_history","");prefs.edit().putString("song_audio_history",history.length()>7000?history.substring(0,7000):history).apply();}catch(Exception ignored){}});
+    }
     public static void attachPlayer(Object value) { player = value; }
     public static void finishSetup() { if(appContext!=null) configure(appContext); }
     public static boolean isTv(Context c) {
@@ -109,6 +114,7 @@ public final class TvBridge {
             case AudioFormat.ENCODING_PCM_24BIT_PACKED:return "PCM 24-bit";
             case AudioFormat.ENCODING_PCM_32BIT:return "PCM 32-bit";
             case AudioFormat.ENCODING_IEC61937:return "IEC61937 (payload not measured)";
+            case AudioFormat.ENCODING_MPEGH_BL_L3:case AudioFormat.ENCODING_MPEGH_BL_L4:case AudioFormat.ENCODING_MPEGH_LC_L3:case AudioFormat.ENCODING_MPEGH_LC_L4:return "MPEG-H 3D Audio";
             default:return "encoding "+encoding;
         }
     }
@@ -129,6 +135,7 @@ public final class TvBridge {
                 quality=String.valueOf(call(a,"getAudioQuality"));
                 resolution=call(a,"getBitDepth")+"-bit / "+call(a,"getSampleRate")+" Hz";
                 if(quality.contains("JOC")||quality.contains("DATMOS")||quality.equals("ATMOS"))sourceSummary="Atmos source";
+                else if(quality.contains("360")||quality.contains("MPEGH")||quality.contains("MPEG_H"))sourceSummary="360 Reality Audio / MPEG-H source";
                 else if(quality.contains("UHD")||((Number)call(a,"getBitDepth")).intValue()>16)sourceSummary="Ultra HD source · "+resolution;
                 else if(quality.startsWith("HD"))sourceSummary="HD source · "+resolution;
                 else sourceSummary=quality+" · "+resolution;
@@ -170,7 +177,15 @@ public final class TvBridge {
             prefs.edit().putString("audio_transitions",history).apply();
         }
         details.append("\n\nRecent stream / output changes:\n").append(prefs.getString("audio_transitions","None recorded yet."));
+        details.append("\n\nSong-start output snapshots:\n").append(prefs.getString("song_audio_history","None yet."));
+        details.append("\n\nVizio Elevate: the green Atmos indicator fades after 5 seconds. It is not a per-song guarantee. Use the soundbar's SETUP > Info > OK to hear the current input and audio type. A continuous stream need not renegotiate on each song.");
         snapshot=new Snapshot(summary,stats,details.toString());
     }
+    public static String sony360(Context c){
+        boolean output=false;AudioManager audio=(AudioManager)c.getSystemService(Context.AUDIO_SERVICE);
+        for(AudioDeviceInfo device:audio.getDevices(AudioManager.GET_DEVICES_OUTPUTS))for(int e:device.getEncodings())if(e==AudioFormat.ENCODING_MPEGH_BL_L3||e==AudioFormat.ENCODING_MPEGH_BL_L4||e==AudioFormat.ENCODING_MPEGH_LC_L3||e==AudioFormat.ENCODING_MPEGH_LC_L4)output=true;
+        return "Sony 360 Reality Audio uses MPEG-H 3D Audio. Android advertises an MPEG-H output: "+output+".\nA source badge does not prove HDMI passthrough. This app does not force MPEG-H or convert Sony 360 into Atmos. End-to-end 360 support on this TV and soundbar has not been established.";
+    }
 }
+
 

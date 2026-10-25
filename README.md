@@ -2,6 +2,36 @@
 
 Private Google TV adaptation for a Sony A80L / Vizio Elevate setup. Uses the supplied newer Amazon Music 26.36.1 playback engine and native browsing/player resources ported from Amazon Music TV 3.4.1294.0.
 
+## Build 6
+
+- Rebuilds the native TV chrome around a black background, compact top categories and a fixed bottom navigation/player bar. Larger rounded artwork cards include artist subtitles, consistent focus outlines and no fixed-height shelf clipping. Bottom controls are drawn as native vector shapes rather than font glyphs.
+- Replaces the full-screen player with a focused artwork/metadata layout, seek control, Lyrics, Queue and contextual options. Less-used PiP/dock actions live in Options instead of overflowing the transport row.
+- Hold OK on a music card/row opens its context menu; track rows also have a visible options button. Menu/Info still jumps to the fixed mini-player; Up or Back restores the previous content focus. This replaces build 5's hold-OK shortcut.
+- Track menus call the bundled Amazon implementations for Play similar music, Play next, Add to queue and Add to playlist. Album/artist views use the existing library factory; unavailable entities report that limitation. Current-song Like/Unlike is shown only if the native controller says rating is available. Browse IDs without a catalog ASIN keep a reduced menu. These actions do not synthesize an account or bypass entitlement checks.
+- Adds a native Lyrics page using Amazon's bundled LyricsManager, existing account marketplace and authenticated fetcher, including its cache and copyright attribution. Timed lines highlight as playback advances and can be selected to seek. Lyrics reload on song changes; no lyrics are invented when Amazon supplies none. Queue displays the original session queue and skips using its actual queue IDs.
+- Account opens a native account-status page. Sign in with a code launches the bundled Amazon automotive device-linking screen and completion activity in landscape, then reconnects the library. Amazon must accept the linking request. The mobile account screen remains explicitly labeled Legacy, instead of opening automatically from Account.
+- Audio output distinguishes MPEG-H / Sony 360 source and output encodings, reports whether Android advertises MPEG-H output, and records a source/output snapshot when the song changes. The selected format and the observed AudioTrack remain separate from proof of the HDMI bitstream.
+
+### Device and format limits
+
+**Direct receiving in TV Plus is not implemented.** The Devices page explains the existing system receivers and links TV settings; it does not advertise a fake Cast, AirPlay or Amazon device. Google Cast Connect needs a registered application ID associated with the TV package and sender integration, including sender opt-in. A new app ID cannot redirect Amazon's unchanged iOS sender to our APK. Alexa Cast requires an Amazon-compatible account-linked receiver; the public Connected Speaker APIs are restricted to commercial device makers. The BRAVIA's existing Cast and AirPlay receivers remain separate from this app.
+
+**Sony 360 passthrough is not enabled.** 360 Reality Audio is based on MPEG-H 3D Audio. End-to-end support on this A80L / Vizio P514a-H6 path has not been established. MPEG-H cannot be made into Atmos simply by changing a format label. The working Atmos preference and lossless fallback remain unchanged.
+
+The Vizio manual says the green Atmos indicator appears for five seconds before fading. Lack of a new flash on each song does not establish a format downgrade. A continuous HDMI stream may not renegotiate at every boundary. Use SETUP > Info > OK on the soundbar remote to hear its current input/audio type. Compare that with Audio output's source, observed encoding and per-song history.
+
+### Validation and TV checks
+
+Build 6 compiles against API 35, retains package `com.amazon.mp3` and the existing signing certificate, and increments the version for install-over updates. All 17 original playback dex files and 52 native libraries are preserved byte-for-byte from the verified build 5 APK. No playback engine patch changes are included.
+
+Physical-device validation is still required for layout/focus, Amazon code linking, lyrics availability/timing, queue edits, native playlist picker, related-library views and sustained Atmos. Compilation and static API inspection do not establish these runtime results. No Cast/AirPlay receiving or Sony 360 passthrough claim is made.
+
+References:
+- [Google Cast Connect setup](https://developers.google.com/cast/docs/android_tv_receiver/core_features)
+- [Amazon Connected Speaker restrictions](https://developer.amazon.com/en-US/alexa/devices/speakers/cloud-controlled-speakers)
+- [Sony 360 Reality Audio developer information](https://www.sony.co.jp/en/Products/360RA/licensing/)
+- [Vizio P514a-H6 manual](https://cdn.vizio.com/misc/KBImages/models/p514ah6/2021_P514a-H6_UM-ENG.pdf)
+
 ## Build 5
 
 - Hold OK on a card, navigation item or playback control to focus the mini-player immediately. Menu/Info also jumps there. Up or Back restores the previous content focus without scrolling through the library.
@@ -90,4 +120,5 @@ The script verifies the exact base hash, recompiles classes18.dex, increments th
 ## Release distribution
 
 Publish signed APK builds through GitHub Releases in this private repository. Attach the versioned APK and its SHA-256 checksum, and provide a copyable browser release/download URL as the primary distribution link. Reuse the existing package ID and private signing key, and increment the version code for install-over updates. Keep signing keys and credentials out of Git and release assets. Verify the published release and its APK asset before reporting publication as complete.
+
 

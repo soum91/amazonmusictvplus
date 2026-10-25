@@ -240,6 +240,8 @@
             <meta-data android:name="com.amazon.alexa.externalmediaplayer.metadata" android:resource="@raw/external_media_player_metadata" />
         </service>
         <meta-data android:name="MAPRuntimeIsolateForAccountPool" android:value="Amazon_Teens" />
+        <activity android:name="com.amazon.mp3.auto.signin.AutomotiveSignInFlowLauncherActivity" android:exported="false" android:screenOrientation="landscape" android:theme="@style/Theme.AmazonMP3.FullScreen" />
+        <activity android:name="com.amazon.mp3.auto.signin.AutomotiveProgressActivity" android:exported="false" android:screenOrientation="landscape" android:theme="@style/Theme.AmazonMP3.FullScreen" />
         <service android:enabled="false" android:exported="true" android:name="com.amazon.music.media.autocal.AmazonMusicCarAppService">
             <intent-filter>
                 <action android:name="androidx.car.app.CarAppService" />
