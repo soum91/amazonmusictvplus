@@ -12,7 +12,7 @@ def main():
     p.add_argument('--work',default=ROOT/'build',type=Path)
     p.add_argument('--build-number',default=10,type=int)
     a=p.parse_args()
-    versions={'37a491724d86ac37292a167a308c279c13730cbe95c11b2aa79257444754a736':3,'8620a8037b20fca056fc7b41f5fa71e9cc63a63941c890edc04b68ae00a5fcf0':4,'9593a8d9527a2f5761511a9d7dbbaf58af4565de26b34e25966c7f0bde40dccb':5,'4a9330fda584750703a26f65ae63f84b2d1526134cd5e47c79b1afaa0e4b76cc':6,'05f85284ac605ca495882a3396010e61d6d93774a8b44be612f24f1ff0b62d8e':7,'eea021d6ac592e1fe244f4408b8a997d41f4b064140259484e13b43c94114875':8,'2e7753d64d56b60f090151a77ad9262c0125e6854d12c01ef46a186868ec21b3':9}
+    versions={'37a491724d86ac37292a167a308c279c13730cbe95c11b2aa79257444754a736':3,'8620a8037b20fca056fc7b41f5fa71e9cc63a63941c890edc04b68ae00a5fcf0':4,'9593a8d9527a2f5761511a9d7dbbaf58af4565de26b34e25966c7f0bde40dccb':5,'4a9330fda584750703a26f65ae63f84b2d1526134cd5e47c79b1afaa0e4b76cc':6,'05f85284ac605ca495882a3396010e61d6d93774a8b44be612f24f1ff0b62d8e':7,'eea021d6ac592e1fe244f4408b8a997d41f4b064140259484e13b43c94114875':8,'2e7753d64d56b60f090151a77ad9262c0125e6854d12c01ef46a186868ec21b3':9,'0bc0991f518c2604c4a3c785fd0eca6b01deb2587352866e33581c2021f3645e':10}
     version=versions.get(hashlib.file_digest(a.base_apk.open('rb'),'sha256').hexdigest())
     if version is None:raise ValueError('Expected a verified signed build 3 through 9 APK')
     if a.build_number<=version:raise ValueError('Update version must exceed the base APK version')
