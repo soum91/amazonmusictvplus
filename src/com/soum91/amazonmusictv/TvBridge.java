@@ -4,6 +4,8 @@ import android.content.Context;
 import android.media.*;
 import android.os.Build;
 import java.lang.reflect.Method;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 /** TV adapter. Amazon's original authentication, entitlement and DRM remain in place. */
 public final class TvBridge {
@@ -39,13 +41,36 @@ public final class TvBridge {
     }
     public static boolean levelerEnabled(Context c) {return c.getSharedPreferences("amazon_music_tv",0).getBoolean("volume_leveler",true);}
     public static int levelerTrimDb(Context c) {return c.getSharedPreferences("amazon_music_tv",0).getInt("stereo_trim_db",6);}
+    public static boolean autoLevelerEnabled(Context c) {return c.getSharedPreferences("amazon_music_tv",0).getBoolean("auto_leveler",true);}
+    public static int levelerTargetDb(Context c) {return c.getSharedPreferences("amazon_music_tv",0).getInt("leveler_target_db",-18);}
+    public static String levelerShort(Context c) {if(!levelerEnabled(c))return "Leveler: Off";if(autoLevelerEnabled(c))return "Auto leveler: "+(autoGainDb>=0?"+":"")+String.format(java.util.Locale.ROOT,"%.1f",autoGainDb)+" dB";return "Leveler: -"+levelerTrimDb(c)+" dB PCM";}
     public static void applyLeveler(Context c) {
         appContext=c.getApplicationContext();AudioTrack track=observedTrack.get();if(track==null)return;
         try{
             int encoding=track.getFormat().getEncoding();boolean passthrough=encoding==AudioFormat.ENCODING_E_AC3_JOC||encoding==AudioFormat.ENCODING_E_AC3||encoding==AudioFormat.ENCODING_AC3||encoding==AudioFormat.ENCODING_IEC61937||encoding==AudioFormat.ENCODING_MPEGH_BL_L3||encoding==AudioFormat.ENCODING_MPEGH_BL_L4||encoding==AudioFormat.ENCODING_MPEGH_LC_L3||encoding==AudioFormat.ENCODING_MPEGH_LC_L4;
-            float gain=!levelerEnabled(c)||passthrough?1f:(float)Math.pow(10d,-levelerTrimDb(c)/20d);track.setVolume(gain);lastLeveler=passthrough?"Passthrough unchanged":levelerEnabled(c)?"Stereo/PCM -"+levelerTrimDb(c)+" dB":"Off";
+            boolean auto=levelerEnabled(c)&&autoLevelerEnabled(c);float gain=!levelerEnabled(c)||passthrough||auto?1f:(float)Math.pow(10d,-levelerTrimDb(c)/20d);track.setVolume(gain);lastLeveler=passthrough?"Passthrough unchanged":!levelerEnabled(c)?"Off":auto?autoStatus:"Stereo/PCM -"+levelerTrimDb(c)+" dB";
         }catch(Exception e){lastLeveler="Unavailable: "+e.getClass().getSimpleName();}
     }
+    private static final Object levelerLock=new Object();private static volatile AudioTrack autoTrack;private static volatile double autoInputDb=-60,autoGainDb;private static volatile String autoStatus="Automatic · waiting for PCM";
+    public static void processPcm(ByteBuffer source,int byteCount,AudioTrack track) {
+        Context c=appContext;if(c==null||source==null||track==null||!levelerEnabled(c)||!autoLevelerEnabled(c))return;
+        int encoding;try{encoding=track.getFormat().getEncoding();}catch(Exception e){return;}
+        if(encoding!=AudioFormat.ENCODING_PCM_16BIT&&encoding!=AudioFormat.ENCODING_PCM_FLOAT&&encoding!=AudioFormat.ENCODING_PCM_24BIT_PACKED&&encoding!=AudioFormat.ENCODING_PCM_32BIT)return;
+        synchronized(levelerLock){try{
+            ByteBuffer b=source.duplicate().order(ByteOrder.LITTLE_ENDIAN);int start=b.position(),end=Math.min(b.limit(),start+Math.max(0,byteCount));int bytes=encoding==AudioFormat.ENCODING_PCM_16BIT?2:encoding==AudioFormat.ENCODING_PCM_24BIT_PACKED?3:4,samples=(end-start)/bytes;if(samples<8)return;
+            int stride=Math.max(1,samples/4096);double sum=0,peak=0;int count=0;
+            for(int n=0;n<samples;n+=stride){int at=start+n*bytes;double v=sample(b,at,encoding);sum+=v*v;peak=Math.max(peak,Math.abs(v));count++;}
+            double rms=Math.sqrt(sum/Math.max(1,count));if(rms<0.001){autoStatus="Automatic · silence · gain "+signed(autoGainDb)+" dB";lastLeveler=autoStatus;return;}
+            double measured=20d*Math.log10(rms);if(autoTrack!=track){autoTrack=track;autoInputDb=measured;autoGainDb=0;}else autoInputDb=autoInputDb*0.96d+measured*0.04d;
+            double desired=clamp(levelerTargetDb(c)-autoInputDb,-12d,6d),headroom=peak<=0?6d:20d*Math.log10(0.98d/peak);desired=Math.min(desired,headroom);double rate=desired<autoGainDb?0.12d:0.025d;autoGainDb+=clamp(desired-autoGainDb,-2d,2d)*rate;autoGainDb=Math.min(autoGainDb,headroom);double gain=Math.pow(10d,autoGainDb/20d);
+            if(Math.abs(gain-1d)>0.002d)for(int n=0;n<samples;n++){int at=start+n*bytes;writeSample(b,at,encoding,sample(b,at,encoding)*gain);}
+            autoStatus="Automatic · input "+String.format(java.util.Locale.ROOT,"%.1f",autoInputDb)+" dBFS · target "+levelerTargetDb(c)+" dBFS · gain "+signed(autoGainDb)+" dB";lastLeveler=autoStatus;
+        }catch(java.nio.ReadOnlyBufferException e){autoStatus="Automatic analysis only · PCM buffer is read-only";lastLeveler=autoStatus;}catch(Exception e){autoStatus="Automatic unavailable: "+e.getClass().getSimpleName();lastLeveler=autoStatus;}}
+    }
+    private static double sample(ByteBuffer b,int at,int encoding){if(encoding==AudioFormat.ENCODING_PCM_16BIT)return b.getShort(at)/32768d;if(encoding==AudioFormat.ENCODING_PCM_FLOAT)return b.getFloat(at);if(encoding==AudioFormat.ENCODING_PCM_24BIT_PACKED){int v=(b.get(at)&255)|((b.get(at+1)&255)<<8)|(b.get(at+2)<<16);return v/8388608d;}return b.getInt(at)/2147483648d;}
+    private static void writeSample(ByteBuffer b,int at,int encoding,double value){value=clamp(value,-1d,0.999999d);if(encoding==AudioFormat.ENCODING_PCM_16BIT){b.putShort(at,(short)Math.round(value*32767d));return;}if(encoding==AudioFormat.ENCODING_PCM_FLOAT){b.putFloat(at,(float)value);return;}if(encoding==AudioFormat.ENCODING_PCM_24BIT_PACKED){int v=(int)Math.round(value*8388607d);b.put(at,(byte)v);b.put(at+1,(byte)(v>>8));b.put(at+2,(byte)(v>>16));return;}b.putInt(at,(int)Math.round(value*2147483647d));}
+    private static double clamp(double value,double low,double high){return Math.max(low,Math.min(high,value));}
+    private static String signed(double value){return (value>=0?"+":"")+String.format(java.util.Locale.ROOT,"%.1f",value);}
     public static Object call(Object target, String method) throws Exception {
         Method m = target.getClass().getMethod(method); m.setAccessible(true); return m.invoke(target);
     }
