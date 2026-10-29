@@ -37,6 +37,15 @@ public final class TvBridge {
     public static boolean preferAtmos(Context c) {
         return c.getSharedPreferences("amazon_music_tv",0).getBoolean("atmos",true);
     }
+    public static boolean levelerEnabled(Context c) {return c.getSharedPreferences("amazon_music_tv",0).getBoolean("volume_leveler",true);}
+    public static int levelerTrimDb(Context c) {return c.getSharedPreferences("amazon_music_tv",0).getInt("stereo_trim_db",6);}
+    public static void applyLeveler(Context c) {
+        appContext=c.getApplicationContext();AudioTrack track=observedTrack.get();if(track==null)return;
+        try{
+            int encoding=track.getFormat().getEncoding();boolean passthrough=encoding==AudioFormat.ENCODING_E_AC3_JOC||encoding==AudioFormat.ENCODING_E_AC3||encoding==AudioFormat.ENCODING_AC3||encoding==AudioFormat.ENCODING_IEC61937||encoding==AudioFormat.ENCODING_MPEGH_BL_L3||encoding==AudioFormat.ENCODING_MPEGH_BL_L4||encoding==AudioFormat.ENCODING_MPEGH_LC_L3||encoding==AudioFormat.ENCODING_MPEGH_LC_L4;
+            float gain=!levelerEnabled(c)||passthrough?1f:(float)Math.pow(10d,-levelerTrimDb(c)/20d);track.setVolume(gain);lastLeveler=passthrough?"Passthrough unchanged":levelerEnabled(c)?"Stereo/PCM -"+levelerTrimDb(c)+" dB":"Off";
+        }catch(Exception e){lastLeveler="Unavailable: "+e.getClass().getSimpleName();}
+    }
     public static Object call(Object target, String method) throws Exception {
         Method m = target.getClass().getMethod(method); m.setAccessible(true); return m.invoke(target);
     }
@@ -71,9 +80,10 @@ public final class TvBridge {
     // The monitor hook only keeps weak references. It never changes the track or routing.
     private static volatile java.lang.ref.WeakReference<AudioTrack> observedTrack = new java.lang.ref.WeakReference<AudioTrack>(null);
     private static volatile java.lang.ref.WeakReference<Object> observedWatcher = new java.lang.ref.WeakReference<Object>(null);
+    private static volatile String lastLeveler="Waiting for playback";
     public static void observeOutputTrack(Object watcher, AudioTrack track) {
         if (watcher != null && observedWatcher.get() != watcher) observedWatcher = new java.lang.ref.WeakReference<Object>(watcher);
-        if (track != null && observedTrack.get() != track) observedTrack = new java.lang.ref.WeakReference<AudioTrack>(track);
+        if (track != null && observedTrack.get() != track) {observedTrack = new java.lang.ref.WeakReference<AudioTrack>(track);Context c=appContext;if(c!=null)applyLeveler(c);}
     }
     private static final java.util.concurrent.ExecutorService monitor = java.util.concurrent.Executors.newSingleThreadExecutor(r -> {
         Thread t = new Thread(r, "AmazonMusicTV.Audio"); t.setDaemon(true); return t;
@@ -151,7 +161,7 @@ public final class TvBridge {
                 trackDetails="AudioTrack: "+output+"\nTrack format: "+track.getSampleRate()+" Hz / "+track.getChannelCount()+" channels\nTrack state: "+state+"\nRouted device: "+describeDevice(track.getRoutedDevice())+"\nOffloaded: "+track.isOffloadedPlayback()+"\nUnderruns: "+track.getUnderrunCount();
             } else {output="released";trackDetails="The observed AudioTrack has been released. Start another track.";}
         } catch(IllegalStateException e){output="unavailable";trackDetails="AudioTrack changed during sampling. Waiting for the next update.";}
-        String summary=sourceSummary+" · Output: "+output;
+        applyLeveler(c);String summary=sourceSummary+" · Output: "+output;
         String stats="Selected stream: "+quality+"\nReported source resolution: "+resolution+"\n"+trackDetails+"\nLegacy engine output: "+legacy;
         Object watcher=observedWatcher.get();
         long now=android.os.SystemClock.elapsedRealtime();if(lastCapabilityRead==0||now-lastCapabilityRead>15000){lastDirectCapability=directAtmosSupported();lastCapabilityRead=now;}
@@ -160,6 +170,7 @@ public final class TvBridge {
             .append("\n\nDirect E-AC3/JOC capability: ").append(lastDirectCapability)
             .append("\nEngine DD+ Atmos compatibility: ").append(field(watcher,"mBasicDDPSupportsAtmos"))
             .append("\nEngine HDMI Atmos fallback: ").append(field(watcher,"mHDMISinkSecretlySupportsAtmos"))
+            .append("\nVolume leveler: ").append(lastLeveler)
             .append("\nEngine rejected formats: ").append(field(watcher,"mIgnoredSampleFormats"));
         AudioManager audio=(AudioManager)c.getSystemService(Context.AUDIO_SERVICE);
         for(AudioDeviceInfo d:audio.getDevices(AudioManager.GET_DEVICES_OUTPUTS))details.append("\n\nAvailable device: ").append(describeDevice(d)).append("\nEncodings: ").append(java.util.Arrays.toString(d.getEncodings())).append("\nRates: ").append(java.util.Arrays.toString(d.getSampleRates()));
@@ -187,5 +198,6 @@ public final class TvBridge {
         return "Sony 360 Reality Audio uses MPEG-H 3D Audio. Android advertises an MPEG-H output: "+output+".\nA source badge does not prove HDMI passthrough. This app does not force MPEG-H or convert Sony 360 into Atmos. End-to-end 360 support on this TV and soundbar has not been established.";
     }
 }
+
 
 

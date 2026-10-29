@@ -10,11 +10,11 @@ def main():
     p.add_argument('--tools',required=True,type=Path)
     p.add_argument('--signing-dir',required=True,type=Path)
     p.add_argument('--work',default=ROOT/'build',type=Path)
-    p.add_argument('--build-number',default=6,type=int)
+    p.add_argument('--build-number',default=8,type=int)
     a=p.parse_args()
-    versions={'37a491724d86ac37292a167a308c279c13730cbe95c11b2aa79257444754a736':3,'8620a8037b20fca056fc7b41f5fa71e9cc63a63941c890edc04b68ae00a5fcf0':4,'9593a8d9527a2f5761511a9d7dbbaf58af4565de26b34e25966c7f0bde40dccb':5,'4a9330fda584750703a26f65ae63f84b2d1526134cd5e47c79b1afaa0e4b76cc':6}
+    versions={'37a491724d86ac37292a167a308c279c13730cbe95c11b2aa79257444754a736':3,'8620a8037b20fca056fc7b41f5fa71e9cc63a63941c890edc04b68ae00a5fcf0':4,'9593a8d9527a2f5761511a9d7dbbaf58af4565de26b34e25966c7f0bde40dccb':5,'4a9330fda584750703a26f65ae63f84b2d1526134cd5e47c79b1afaa0e4b76cc':6,'05f85284ac605ca495882a3396010e61d6d93774a8b44be612f24f1ff0b62d8e':7}
     version=versions.get(hashlib.file_digest(a.base_apk.open('rb'),'sha256').hexdigest())
-    if version is None:raise ValueError('Expected a verified signed build 3, 4, 5 or 6 APK')
+    if version is None:raise ValueError('Expected a verified signed build 3, 4, 5, 6 or 7 APK')
     if a.build_number<=version:raise ValueError('Update version must exceed the base APK version')
     tools=a.tools.resolve();w=a.work.resolve();w.mkdir(parents=True,exist_ok=True)
     def jar(name,*args):return run(['java','-Xmx2g','-jar',tools/(name+'.jar'),*args])
@@ -43,5 +43,6 @@ def main():
     shutil.copyfile(next(signed.glob('*.apk')),output);print(output)
 
 if __name__=='__main__':main()
+
 
 
