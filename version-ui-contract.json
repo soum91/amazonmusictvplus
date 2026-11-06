@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "targets": [
+    {
+      "name": "Android TV app",
+      "evidence": [
+        {
+          "path": "src/com/soum91/amazonmusictv/TvActivity.java",
+          "contains": [
+            "Installed version",
+            "getPackageInfo",
+            "versionName"
+          ]
+        }
+      ]
+    }
+  ]
+}
